@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d14f6a8-646a-42c7-a0b2-7f1cf4609b6e" name="Changes" comment="signIn and signUp">
+    <list default="true" id="1d14f6a8-646a-42c7-a0b2-7f1cf4609b6e" name="Changes" comment="img add">
+      <change afterPath="$PROJECT_DIR$/bg.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,6 +34,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -60,7 +63,7 @@
       <option name="presentableId" value="Default" />
       <updated>1730385246594</updated>
       <workItem from="1730385247594" duration="587000" />
-      <workItem from="1730385858618" duration="950000" />
+      <workItem from="1730385858618" duration="1978000" />
     </task>
     <task id="LOCAL-00001" summary="jquery added">
       <created>1730385515264</created>
@@ -76,15 +79,40 @@
       <option name="project" value="LOCAL" />
       <updated>1730386764423</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="styles Added">
+      <created>1730386829195</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1730386829195</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Script added">
+      <created>1730386868448</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1730386868448</updated>
+    </task>
+    <task id="LOCAL-00005" summary="img add">
+      <created>1730387840342</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1730387840342</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="jquery added" />
     <MESSAGE value="signIn and signUp" />
-    <option name="LAST_COMMIT_MESSAGE" value="signIn and signUp" />
+    <MESSAGE value="styles Added" />
+    <MESSAGE value="Script added" />
+    <MESSAGE value="img add" />
+    <option name="LAST_COMMIT_MESSAGE" value="img add" />
   </component>
 </project>
