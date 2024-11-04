@@ -1,0 +1,119 @@
+body {
+    /*background-color: #57744b;*/
+}
+
+.container {
+    max-width: 1000px;
+}
+
+.welcome {
+    font-family: "Segoe UI";
+    font-weight: 100;
+    font-size: 2.5rem;
+    font-style: normal;
+    color: white;
+    margin-top: 25px; /* Moves the text down by 25px */
+}
+
+
+.login-card {
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.35);
+}
+
+.logo-section {
+    background-color: transparent;
+    padding: 20px;
+    text-align: center;
+}
+
+.logo-img {
+    width: 130%;
+    /*margin-bottom: 10px;*/
+    margin-top: 10px;
+    margin-left: -80px;
+}
+
+.hand-img {
+    width: 100%;
+    margin-right: 88px;
+    margin-bottom: -20px;
+}
+
+.userName{
+    width: 80%;
+    height: 50px;
+    margin: 15% auto;
+}
+.password{
+    width: 80%;
+    height: 50px;
+    margin: 0 auto;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.input-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    color: #83A483;
+    font-size: 20px;
+}
+
+.form-control {
+    flex: 1; /* Makes the input field take the remaining width */
+    padding-left: 40px; /* Extra padding to make room for the icon */
+    border-radius: 10px;
+}
+
+.forgot-password {
+    margin-right: 30px;
+    color: #ffffff;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.btn-success {
+    background-color: #229799;
+    border: 0.3px solid white;
+    width: 45%;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-top: 5%;
+    margin-bottom: 20px;
+}
+
+.btn-warning {
+    background-color: #ff9600;
+    width: 45%;
+    border: none;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-top: 5%;
+    margin-bottom: 20px;
+    color: white;
+}
+.role{
+    margin:10% ;
+    width: 100%;
+    height: 50px;
+}
+
+
+.btn-success:hover,
+.btn-warning:hover {
+    opacity: 0.9;
+}
+@media (max-width: 768px) {
+    .hand-image-container {
+        display: none;
+    }
+}
