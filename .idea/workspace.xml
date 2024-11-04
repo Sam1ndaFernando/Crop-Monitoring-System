@@ -5,23 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d14f6a8-646a-42c7-a0b2-7f1cf4609b6e" name="Changes" comment="styles added">
-      <change afterPath="$PROJECT_DIR$/assets/images/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignUp.html" beforeDir="false" afterPath="$PROJECT_DIR$/SignUp.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/greenshadowlogo-02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/signUp.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/signUp.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/debug.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/styles/dashboard.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/bgSiSu.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/bgSiSu.jpg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -44,7 +45,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "com.codeium.enabled": "true",
-    "last_opened_file_path": "C:/Users/Saminda Fernando/Desktop/Green-Shadow-Management-System",
+    "last_opened_file_path": "C:/Users/Saami/OneDrive/Desktop/AAD FInals Projectd/Crop-Monitoring-System/assets/styles",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -56,6 +57,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Saami\OneDrive\Desktop\AAD FInals Projectd\Crop-Monitoring-System\assets\styles" />
       <recent name="C:\Users\Saminda Fernando\Desktop\Green-Shadow-Management-System" />
       <recent name="C:\Users\Saminda Fernando\Desktop\Green-Shadow-Management-System\assets\images" />
       <recent name="C:\Users\Saminda Fernando\Desktop\Green-Shadow-Management-System\assets\styles" />
@@ -79,6 +81,7 @@
       <workItem from="1730616994018" duration="13000" />
       <workItem from="1730617030792" duration="177000" />
       <workItem from="1730702636831" duration="2474000" />
+      <workItem from="1730728268685" duration="2982000" />
     </task>
     <task id="LOCAL-00001" summary="jquery added">
       <created>1730385515264</created>
