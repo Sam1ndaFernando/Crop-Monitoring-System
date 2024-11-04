@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d14f6a8-646a-42c7-a0b2-7f1cf4609b6e" name="Changes" comment="updated">
-      <change afterPath="$PROJECT_DIR$/assets/images/depositphotos_7151451-stock-photo-plant-in-hands-removebg-preview.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/greenshadowlogo-02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/styles/login.css" afterDir="false" />
+    <list default="true" id="1d14f6a8-646a-42c7-a0b2-7f1cf4609b6e" name="Changes" comment="styles Updated">
+      <change afterPath="$PROJECT_DIR$/SignUp.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/styles/signUp.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/jquery-3.7.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/lib/jquery-3.7.1.min.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +18,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -35,28 +33,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Saminda Fernando/Desktop/Green-Shadow-Management-System/assets/images&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.codeium.enabled": "true",
+    "last_opened_file_path": "C:/Users/Saminda Fernando/Desktop/Green-Shadow-Management-System",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Saminda Fernando\Desktop\Green-Shadow-Management-System" />
       <recent name="C:\Users\Saminda Fernando\Desktop\Green-Shadow-Management-System\assets\images" />
       <recent name="C:\Users\Saminda Fernando\Desktop\Green-Shadow-Management-System\assets\styles" />
-      <recent name="C:\Users\Saminda Fernando\Desktop\Green-Shadow-Management-System" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Saminda Fernando\Desktop\Green-Shadow-Management-System\assets" />
@@ -75,6 +74,8 @@
       <workItem from="1730385858618" duration="2200000" />
       <workItem from="1730612500270" duration="4267000" />
       <workItem from="1730616994018" duration="13000" />
+      <workItem from="1730617030792" duration="177000" />
+      <workItem from="1730702636831" duration="761000" />
     </task>
     <task id="LOCAL-00001" summary="jquery added">
       <created>1730385515264</created>
@@ -125,7 +126,49 @@
       <option name="project" value="LOCAL" />
       <updated>1730387969980</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="updated">
+      <created>1730617058378</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1730617058378</updated>
+    </task>
+    <task id="LOCAL-00009" summary="img add">
+      <created>1730617073101</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1730617073101</updated>
+    </task>
+    <task id="LOCAL-00010" summary="jquarry added">
+      <created>1730617084693</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1730617084693</updated>
+    </task>
+    <task id="LOCAL-00011" summary="updated structure">
+      <created>1730617105668</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1730617105668</updated>
+    </task>
+    <task id="LOCAL-00012" summary="remove old One">
+      <created>1730617125165</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1730617125165</updated>
+    </task>
+    <task id="LOCAL-00013" summary="styles Updated">
+      <created>1730617137539</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1730617137539</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,8 +180,12 @@
     <MESSAGE value="signIn and signUp" />
     <MESSAGE value="styles Added" />
     <MESSAGE value="Script added" />
-    <MESSAGE value="img add" />
     <MESSAGE value="updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated" />
+    <MESSAGE value="img add" />
+    <MESSAGE value="jquarry added" />
+    <MESSAGE value="updated structure" />
+    <MESSAGE value="remove old One" />
+    <MESSAGE value="styles Updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="styles Updated" />
   </component>
 </project>
