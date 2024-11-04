@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d14f6a8-646a-42c7-a0b2-7f1cf4609b6e" name="Changes" comment="styles added">
-      <change afterPath="$PROJECT_DIR$/assets/images/debug.log" afterDir="false" />
+    <list default="true" id="1d14f6a8-646a-42c7-a0b2-7f1cf4609b6e" name="Changes" comment="img updated">
       <change afterPath="$PROJECT_DIR$/assets/styles/dashboard.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/bgSiSu.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/bgSiSu.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,24 +36,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.codeium.enabled": "true",
-    "last_opened_file_path": "C:/Users/Saami/OneDrive/Desktop/AAD FInals Projectd/Crop-Monitoring-System/assets/styles",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Saami/OneDrive/Desktop/AAD FInals Projectd/Crop-Monitoring-System/assets/styles&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Saami\OneDrive\Desktop\AAD FInals Projectd\Crop-Monitoring-System\assets\styles" />
@@ -81,7 +80,8 @@
       <workItem from="1730616994018" duration="13000" />
       <workItem from="1730617030792" duration="177000" />
       <workItem from="1730702636831" duration="2474000" />
-      <workItem from="1730728268685" duration="2982000" />
+      <workItem from="1730728268685" duration="3935000" />
+      <workItem from="1730738819136" duration="2252000" />
     </task>
     <task id="LOCAL-00001" summary="jquery added">
       <created>1730385515264</created>
@@ -195,7 +195,21 @@
       <option name="project" value="LOCAL" />
       <updated>1730703455526</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="updated">
+      <created>1730732242840</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1730732242840</updated>
+    </task>
+    <task id="LOCAL-00018" summary="img updated">
+      <created>1730732256488</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1730732256488</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,8 +227,9 @@
     <MESSAGE value="remove old One" />
     <MESSAGE value="styles Updated" />
     <MESSAGE value="SignUp done" />
-    <MESSAGE value="updated" />
     <MESSAGE value="styles added" />
-    <option name="LAST_COMMIT_MESSAGE" value="styles added" />
+    <MESSAGE value="updated" />
+    <MESSAGE value="img updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="img updated" />
   </component>
 </project>
