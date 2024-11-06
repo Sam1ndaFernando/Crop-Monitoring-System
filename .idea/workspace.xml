@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d14f6a8-646a-42c7-a0b2-7f1cf4609b6e" name="Changes" comment="field done">
+    <list default="true" id="1d14f6a8-646a-42c7-a0b2-7f1cf4609b6e" name="Changes" comment="update">
+      <change afterPath="$PROJECT_DIR$/assets/styles/crop.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crop.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/styles/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -84,7 +85,8 @@
       <workItem from="1730728268685" duration="3935000" />
       <workItem from="1730738819136" duration="2252000" />
       <workItem from="1730872636439" duration="3785000" />
-      <workItem from="1730876469628" duration="609000" />
+      <workItem from="1730876469628" duration="641000" />
+      <workItem from="1730892112915" duration="722000" />
     </task>
     <task id="LOCAL-00001" summary="jquery added">
       <created>1730385515264</created>
@@ -247,7 +249,14 @@
       <option name="project" value="LOCAL" />
       <updated>1730876342669</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="update">
+      <created>1730877095392</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1730877095392</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,6 +281,7 @@
     <MESSAGE value="styles updated" />
     <MESSAGE value="js updated" />
     <MESSAGE value="field done" />
-    <option name="LAST_COMMIT_MESSAGE" value="field done" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>
