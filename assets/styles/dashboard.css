@@ -77,7 +77,7 @@ body {
 }
 
 .glass-card {
-    background: rgba(255, 255, 255, 0.15); /* Transparent white */
+    background: rgba(0, 32, 150, 0.2); /* Transparent white */
     border: none;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.15); /* Soft shadow */
@@ -92,12 +92,19 @@ body {
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3), 0 12px 30px rgba(0, 0, 0, 0.25); /* Stronger shadow */
 }
 
-.glass-card .card-title, .glass-card .card-text {
-    color: #5d00ff; /* Light color for text */
+.glass-card, .glass-card .card-text {
+    color: #97009b; /* Light color for text */
+    font-size: 45px;
+
+}
+.glass-card .card-title, .glass-card .card-title {
+    color: #00126c; /* Light color for text */
+    font-size: 25px;
+
 }
 
 .dashboard-cards {
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .profile-icon i {
@@ -147,4 +154,56 @@ body {
         cursor: pointer;
     }
 
+
 }
+/* Chart CSS */
+
+/* General styling for the chart container */
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* adjust this for responsive widths */
+    margin: 0 auto;
+}
+
+/* Styling for cards containing charts */
+.card {
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 2.0rem;
+margin-left: 80px;
+    font-weight: 100;
+    color: #333;
+}
+
+.chart-container canvas {
+    padding: 20px;
+}
+
+/* Line chart styling */
+#growthChart {
+    background-color: rgba(76, 175, 80, 0.05); /* Light green background for growth chart */
+    border-radius: 30px;
+}
+
+/* Bar chart styling */
+#yieldChart {
+    background-color: rgba(255, 167, 38, 0.05); /* Light orange background for yield chart */
+    border-radius: 30px;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .chart-container {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .card-title {
+        font-size: 1rem;
+    }
+}
+
