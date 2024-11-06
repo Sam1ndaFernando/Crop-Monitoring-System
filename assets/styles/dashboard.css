@@ -169,7 +169,8 @@ body {
 /* Styling for cards containing charts */
 .card {
     border-radius: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
 }
 
 .card-title {
@@ -185,13 +186,13 @@ margin-left: 80px;
 
 /* Line chart styling */
 #growthChart {
-    background-color: rgba(76, 175, 80, 0.05); /* Light green background for growth chart */
+    background-color: rgba(76, 175, 80, 0.1); /* Light green background for growth chart */
     border-radius: 30px;
 }
 
 /* Bar chart styling */
 #yieldChart {
-    background-color: rgba(255, 167, 38, 0.05); /* Light orange background for yield chart */
+    background-color: rgba(255, 167, 38, 0.1); /* Light orange background for yield chart */
     border-radius: 30px;
 }
 

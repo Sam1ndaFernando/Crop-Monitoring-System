@@ -114,7 +114,7 @@
     <div class="col-md-6">
       <div class="card mb-4">
         <div class="card-body">
-          <h5 class="card-title">Field Analytics</h5>
+          <h5 class="card-title">Harvest Analysis</h5>
           <div class="chart-container">
             <canvas id="yieldChart"></canvas>
           </div>
@@ -148,9 +148,9 @@
   var yieldChart = new Chart(ctx2, {
     type: 'bar',
     data: {
-      labels: ['Crop A', 'Crop B', 'Crop C', 'Crop D'],
+      labels: ['January', 'February', 'March', 'April'],
       datasets: [{
-        label: 'Yield (kg)',
+        label: 'Harvest Rate (%)',
         data: [20, 100, 80, 180],
         backgroundColor: '#97009b'
       }]
