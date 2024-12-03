@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d14f6a8-646a-42c7-a0b2-7f1cf4609b6e" name="Changes" comment="update">
-      <change afterPath="$PROJECT_DIR$/assets/styles/crop.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crop.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/dashboard.css" afterDir="false" />
-    </list>
+    <list default="true" id="1d14f6a8-646a-42c7-a0b2-7f1cf4609b6e" name="Changes" comment="update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -87,6 +82,7 @@
       <workItem from="1730872636439" duration="3785000" />
       <workItem from="1730876469628" duration="641000" />
       <workItem from="1730892112915" duration="722000" />
+      <workItem from="1733200324067" duration="34000" />
     </task>
     <task id="LOCAL-00001" summary="jquery added">
       <created>1730385515264</created>
