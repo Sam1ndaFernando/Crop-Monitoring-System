@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- External CSS -->
+    <link href="stylesheets/styles.css" rel="stylesheet">
+    <style>
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #343a40;
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        .main-content {
+            margin-left: 260px;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Sidebar Navigation -->
+<div class="sidebar">
+    <div id="navLinksDiv">
+        <a href="#" id="navDashboard"><i class="fas fa-tachometer-alt"></i>&nbsp;&nbsp;&nbsp; Dashboard</a>
+        <a href="#" id="navCrops"><i class="fas fa-seedling"></i>&nbsp;&nbsp;&nbsp; Crops</a>
+        <a href="#" id="navFields"><i class="fas fa-landmark"></i>&nbsp;&nbsp;&nbsp; Fields</a>
+        <a href="#" id="navLogs"><i class="fas fa-book"></i>&nbsp;&nbsp;&nbsp; Logs</a>
+        <a href="#" id="navEquipment"><i class="fas fa-cogs"></i>&nbsp;&nbsp;&nbsp; Equipment</a>
+        <a href="#" id="navStaff"><i class="fas fa-users"></i>&nbsp;&nbsp;&nbsp; Staff</a>
+        <a href="#" id="navVehicle"><i class="fas fa-car"></i>&nbsp;&nbsp;&nbsp; Vehicles</a>
+        <a href="#" id="navUser"><i class="fas fa-user"></i>&nbsp;&nbsp;&nbsp; User</a>
+        <a href="#" id="navLogout"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;&nbsp; Logout</a>
+    </div>
+</div>
+
+
+<section id="dashboardSection">
+    <div class="main-content">
+        <div class="container">
+            <h2 class="text-center my-4">Dashboard</h2>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            <i class="fas fa-seedling"></i> Crops Overview
+                        </div>
+                        <div class="card-body">
+                            <p>Total Crops: 120</p>
+                            <button class="btn btn-primary">View Crops</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header bg-success text-white">
+                            <i class="fas fa-landmark"></i> Fields Overview
+                        </div>
+                        <div class="card-body">
+                            <p>Total Fields: 15</p>
+                            <button class="btn btn-success">View Fields</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header bg-warning text-white">
+                            <i class="fas fa-book"></i> Logs Overview
+                        </div>
+                        <div class="card-body">
+                            <p>Total Logs: 80</p>
+                            <button class="btn btn-warning">View Logs</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!--/*=================================== Crop ======================================*/-->
+
+<section id="cropSection" style="display: none;">
+    <div class="container mt-5">
+        <h2>Crop Information Form</h2>
+        <form id="cropForm">
+            <div class="mb-3">
+                <label for="cropCode" class="form-label">Crop Code</label>
+                <input type="text" class="form-control" id="cropCode" required>
+            </div>
+            <div class="mb-3">
+                <label for="cropName" class="form-label">Crop Name</label>
+                <input type="text" class="form-control" id="cropName" required>
+            </div>
+            <div class="mb-3">
+                <label for="scientificName" class="form-label">Scientific Name</label>
+                <input type="text" class="form-control" id="scientificName" required>
+            </div>
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <input type="text" class="form-control" id="cropCategory" required>
+            </div>
+            <div class="mb-3">
+                <label for="season" class="form-label">Season</label>
+                <input type="text" class="form-control" id="season" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Crop Image</label>
+                <input type="file" class="form-control" id="imagePicker" accept="image/*" onchange="previewImage(event)" required>
+                <div class="mt-3">
+                    <img id="imagePreview" src="" alt="Image Preview" style="max-width: 200px; display: none;">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success" id="submitCrop">Add Crop</button>
+        </form>
+    </div>
+
+    <!-- Crops Overview Table -->
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Crops Overview</h2>
+        <table class="table table-bordered" id="cropsTable">
+            <thead>
+            <tr>
+                <th>Crop Code</th>
+                <th>Crop Name</th>
+                <th>Scientific Name</th>
+                <th>Category</th>
+                <th>Season</th>
+                <th>Image</th> <!-- New image column -->
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Dynamic Crop Rows will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!--/*=================================== Equipment ======================================*/-->
+
+<section id="equipmentSection" style="display: none;">
+    <div class="container">
+        <h2 class="text-center mb-4">Equipment Information Form</h2>
+
+        <!-- Equipment Information Form -->
+        <form id="equipmentForm">
+            <div class="form-group">
+                <label for="equipmentCode" class="form-label">Equipment Code</label>
+                <input type="text" class="form-control" id="equipmentCode" placeholder="Enter Equipment Code" required>
+            </div>
+            <div class="form-group">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="equipmentName" placeholder="Enter Equipment Name" required>
+            </div>
+            <div class="form-group">
+                <label for="equipmentType" class="form-label">Type</label>
+                <input type="text" class="form-control" id="equipmentType" placeholder="Enter Equipment Type" required>
+            </div>
+            <div class="form-group">
+                <label for="status" class="form-label">Status</label>
+                <input type="text" class="form-control" id="equipmentStatus" placeholder="Enter Equipment Status" required>
+            </div>
+            <div class="form-group">
+                <label for="availableCount" class="form-label">Available Count</label>
+                <input type="number" class="form-control" id="availableCount" placeholder="Enter Available Count" required>
+            </div>
+
+            <div class="form-group">
+                <label for="equipmentImage" class="form-label">Equipment Image</label>
+                <input type="file" class="form-control" id="equipmentImage" accept="image/*" onchange="previewImage(event)">
+            </div>
+            <div class="form-group">
+                <img id="EquipmentimagePreview" src="" alt="Equipment Image Preview" style="max-width: 200px; display: none;">
+            </div>
+
+            </br>
+
+            <button type="submit" id="submitEquipment" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <!-- Equipment Overview Table -->
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Equipment Overview</h2>
+        <table class="table table-bordered" id="equipmentTable">
+            <thead>
+            <tr>
+                <th>Equipment Code</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Available Count</th>
+                <th>Image</th> <!-- Corrected this header -->
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Dynamic Equipment Rows will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!--/*=================================== Field ======================================*/-->
+
+<section id="fieldSection" style="display: none;">
+    <div class="container">
+        <h2 class="text-center mb-4">Field Form</h2>
+        <form id="fieldForm">
+            <div class="form-group">
+                <label for="fieldCode" class="form-label">Field Code</label>
+                <input type="text" class="form-control" id="fieldCode" placeholder="Enter Field Code" required>
+            </div>
+            <div class="form-group">
+                <label for="name" class="form-label">Field Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter Field Name" required>
+            </div>
+            <div class="form-group">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" class="form-control" id="location" placeholder="Enter Location" required>
+            </div>
+            <div class="form-group">
+                <label for="extentSize" class="form-label">Extent Size</label>
+                <input type="number" class="form-control" id="extentSize" placeholder="Enter Extent Size" required>
+            </div>
+            <div class="form-group">
+                <label for="fieldImage1" class="form-label">Field Image 1</label>
+                <input type="file" class="form-control" id="fieldImage1" accept="image/*" onchange="previewImage(event, 'imagePreview1')" required>
+                <img id="imagePreview1" style="display:none; width: 100px; margin-top: 10px;" /> <!-- Image preview for Image 1 -->
+            </div>
+            <div class="form-group">
+                <label for="fieldImage2" class="form-label">Field Image 2</label>
+                <input type="file" class="form-control" id="fieldImage2" accept="image/*" onchange="previewImage(event, 'imagePreview2')" required>
+                <img id="imagePreview2" style="display:none; width: 100px; margin-top: 10px;" />  <!-- Image preview for Image 2 -->
+            </div>
+
+            <button type="submit" id="submitField" class="btn btn-primary">Submit</button>
+        </form>
+
+        <!-- Display submitted field data in a table -->
+        <h2 class="text-center mt-5">Fields Overview</h2>
+        <table class="table table-bordered" id="fieldsTable">
+            <thead>
+            <tr>
+                <th>Field Code</th>
+                <th>Field Name</th>
+                <th>Location</th>
+                <th>Extent Size</th>
+                <th>Images</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Dynamic Field Rows will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+</section>
+
+    <!--/*=================================== Log ======================================*/-->
+
+<section id="logSection" style="display: none;">
+    <div class="container mt-5">
+        <h2 class="mb-4">Log Entry Form</h2>
+        <form id="log-form" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="logCode" class="form-label">Log Code</label>
+                <input type="text" class="form-control" id="logCode" name="logCode" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="logDetails" class="form-label">Log Details</label>
+                <textarea class="form-control" id="logDetails" name="logDetails" rows="3" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="observedImage" class="form-label">Observed Image</label>
+                <input type="file" class="form-control" id="observedImage" name="observedImage">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="staffOfLog">Responsible Staff</label>
+                <input class="form-control" id="staffOfLog" name="staffList" placeholder="Enter staff responsible" required type="text">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="cropOfLog">Crop List</label>
+                <input class="form-control" id="cropOfLog" name="cropList" placeholder="Enter crop responsible" required type="text">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="fieldOfLog">Field List</label>
+                <input class="form-control" id="fieldOfLog" name="fieldList" placeholder="Enter field responsible" required type="text">
+            </div>
+
+            <button type="submit" id="submitLog" class="btn btn-primary">Submit</button>
+        </form>
+
+        <h3 class="mt-5">Log Entries Overview</h3>
+        <table class="table table-bordered" id="logTable">
+            <thead>
+            <tr>
+                <th>Log Code</th>
+                <th>Date</th>
+                <th>Log Details</th>
+                <th>Responsible Staff</th>
+                <th>Crop List</th>
+                <th>Field List</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Dynamic log rows will be inserted here -->
+            </tbody>
+        </table>
+
+        <div id="response-message" class="mt-3"></div>
+    </div>
+</section>
+
+<!--/*=================================== Staff ======================================*/-->
+
+<section id="staffSection" style="display: none;">
+    <div class="container mt-5">
+        <h2 class="mb-4">Staff Entry Form</h2>
+        <!-- Staff Entry Form -->
+        <form id="staff-form">
+            <div class="mb-3">
+                <label for="memberCode" class="form-label">Member Code</label>
+                <input type="text" class="form-control" id="memberCode" name="memberCode" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="joinedDate" class="form-label">Joined Date</label>
+                <input type="date" class="form-control" id="joinedDate" name="joinedDate" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="dateOfBirth" class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="gender" class="form-label">Gender</label>
+                <select class="form-select" id="gender" name="gender" required>
+                    <option value="MALE">Male</option>
+                    <option value="FEMALE">Female</option>
+                    <option value="OTHER">Other</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="designation" class="form-label">Designation</label>
+                <input type="text" class="form-control" id="designation" name="designation" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="addressLine1" class="form-label">Address Line 1</label>
+                <input type="text" class="form-control" id="addressLine1" name="addressLine1" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="addressLine2" class="form-label">Address Line 2</label>
+                <input type="text" class="form-control" id="addressLine2" name="addressLine2">
+            </div>
+
+            <div class="mb-3">
+                <label for="contactNo" class="form-label">Contact Number</label>
+                <input type="tel" class="form-control" id="contactNo" name="contactNo" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="role" class="form-label">Role</label>
+                <select class="form-select" id="role" name="role" required>
+                    <option value="ADMIN">Admin</option>
+                    <option value="USER">User</option>
+                </select>
+            </div>
+
+            <button type="submit" id="submitStaff" class="btn btn-primary">Submit</button>
+        </form>
+
+        <!-- Table for displaying staff entries -->
+        <h3 class="mt-5">Staff List</h3>
+        <table class="table table-striped mt-3" id="staffTable">
+            <thead>
+            <tr>
+                <th>Member Code</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Joined Date</th>
+                <th>Date of Birth</th>
+                <th>Gender</th>
+                <th>Designation</th>
+                <th>Contact No</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Staff entries will be populated here -->
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+
+
+<!--/*=================================== User ======================================*/-->
+
+<section id="userSection" style="display: none;">
+    <div class="container mt-5">
+        <h2 class="mb-4">User Entry Form</h2>
+
+        <!-- User Entry Form -->
+        <form id="user-form">
+            <div class="mb-3">
+                <label class="form-label" for="userEmail">Email (Username)</label>
+                <input class="form-control" id="userEmail" placeholder="Enter email" required type="email">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="userPassword">Password</label>
+                <input class="form-control" id="userPassword" placeholder="Enter password" required type="password">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="userRole">Role</label>
+                <select class="form-control" id="userRole" required>
+                    <option disabled selected value="">Select role</option>
+                    <option value="MANAGER">Manager</option>
+                    <option value="ADMINISTRATIVE">Administrative</option>
+                    <option value="SCIENTIST">Scientist</option>
+                    <option value="OTHER">Other</option>
+                </select>
+            </div>
+            <button type="submit" id="submitUser" class="btn btn-primary">Submit</button>
+        </form>
+
+        <!-- User Table -->
+        <h3 class="mt-5">User Information</h3>
+        <table class="table table-bordered" id="user-table">
+            <thead>
+            <tr>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- User data will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+
+<!--/*=================================== Vehicle ======================================*/-->
+<section id="vehicleSection" style="display: none;">
+    <div class="container mt-5">
+        <h2 class="mb-4">Vehicle Form</h2>
+
+        <!-- Vehicle Entry Form -->
+        <form id="vehicleForm">
+            <div class="mb-3">
+                <label class="form-label" for="vehicleCode">Vehicle Code</label>
+                <input class="form-control" id="vehicleCode" placeholder="Enter vehicle code" type="text">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="licensePlateNumber">License Plate Number</label>
+                <input class="form-control" id="licensePlateNumber" placeholder="Enter license plate number" type="text">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="vehicleName">Vehicle Name</label>
+                <input class="form-control" id="vehicleName" placeholder="Enter vehicle name" type="text">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="category">Category</label>
+                <input class="form-control" id="category" placeholder="Enter category" type="text">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="fuelType">Fuel Type</label>
+                <input class="form-control" id="fuelType" placeholder="Enter fuel type" type="text">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="status">Status</label>
+                <input class="form-control" id="status" placeholder="Enter status" type="text">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="remark">Remark</label>
+                <textarea class="form-control" id="remark" placeholder="Enter any remarks"></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="staff">Assigned Staff</label>
+                <select class="form-control" id="staff">
+                    <!-- Staff options will be populated dynamically -->
+                </select>
+            </div>
+            <button type="submit" id="submitVehicle" class="btn btn-primary">Submit</button>
+        </form>
+
+        <!-- Vehicle Table -->
+        <h3 class="mt-5">Vehicle Information</h3>
+        <table class="table table-bordered" id="vehicleTable">
+            <thead>
+            <tr>
+                <th>Vehicle Code</th>
+                <th>License Plate</th>
+                <th>Vehicle Name</th>
+                <th>Category</th>
+                <th>Fuel Type</th>
+                <th>Status</th>
+                <th>Remark</th>
+                <th>Assigned Staff</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Vehicle data will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="module" src="controller/DashboardController.js"></script>
+<script type="module" src="controller/CropController.js"></script>
+<script type="module" src="controller/EquipmentController.js"></script>
+<script type="module" src="controller/FieldController.js"></script>
+<script type="module" src="controller/LogController.js"></script>
+<script type="module" src="controller/StaffController.js"></script>
+<script type="module" src="controller/UserController.js"></script>
+<script type="module" src="controller/VehicleController.js"></script>
+
+</body>
+
+</html>
