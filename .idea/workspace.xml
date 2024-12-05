@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d14f6a8-646a-42c7-a0b2-7f1cf4609b6e" name="Changes" comment="updated">
+    <list default="true" id="1d14f6a8-646a-42c7-a0b2-7f1cf4609b6e" name="Changes" comment="VehicleController updated">
+      <change afterPath="$PROJECT_DIR$/assets/picture/CropLogin.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/CropController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/CropController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/EquipmentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/EquipmentController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/FieldController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/FieldController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/MonitoringLogController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/MonitoringLogController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/StaffController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/StaffController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/VehicleController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/VehicleController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/IndexController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/IndexController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/signIn.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/signIn.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +57,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Saami/Downloads/FrontEnd/Crop-Monitoring-System&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Saami/Downloads/FrontEnd/Crop-Monitoring-System/css&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -72,13 +70,14 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Saami\Downloads\FrontEnd\Crop-Monitoring-System\css" />
       <recent name="C:\Users\Saami\Downloads\FrontEnd\Crop-Monitoring-System" />
       <recent name="C:\Users\Saminda Fernando\Desktop\Crop-Monitoring-System\assets\styles" />
       <recent name="C:\Users\Saminda Fernando\Desktop\Crop-Monitoring-System" />
       <recent name="C:\Users\Saami\OneDrive\Desktop\AAD FInals Projectd\Crop-Monitoring-System\assets\styles" />
-      <recent name="C:\Users\Saminda Fernando\Desktop\Green-Shadow-Management-System" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Saami\Downloads\FrontEnd\Crop-Monitoring-System\assets\picture" />
       <recent name="C:\Users\Saminda Fernando\Desktop\Green-Shadow-Management-System\assets\images" />
       <recent name="C:\Users\Saminda Fernando\Desktop\Green-Shadow-Management-System\assets" />
     </key>
@@ -117,49 +116,9 @@
       <workItem from="1733407742148" duration="1427000" />
       <workItem from="1733409205819" duration="199000" />
       <workItem from="1733409426434" duration="682000" />
-      <workItem from="1733411650681" duration="384000" />
-    </task>
-    <task id="LOCAL-00014" summary="SignUp done">
-      <created>1730703428455</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1730703428455</updated>
-    </task>
-    <task id="LOCAL-00015" summary="updated">
-      <created>1730703445507</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1730703445507</updated>
-    </task>
-    <task id="LOCAL-00016" summary="styles added">
-      <created>1730703455526</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1730703455526</updated>
-    </task>
-    <task id="LOCAL-00017" summary="updated">
-      <created>1730732242840</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1730732242840</updated>
-    </task>
-    <task id="LOCAL-00018" summary="img updated">
-      <created>1730732256488</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1730732256488</updated>
-    </task>
-    <task id="LOCAL-00019" summary=" updated">
-      <created>1730873937438</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1730873937438</updated>
+      <workItem from="1733411650681" duration="1900000" />
+      <workItem from="1733414075717" duration="2948000" />
+      <workItem from="1733417644568" duration="623000" />
     </task>
     <task id="LOCAL-00020" summary="styles updated">
       <created>1730876310069</created>
@@ -462,7 +421,49 @@
       <option name="project" value="LOCAL" />
       <updated>1733409489662</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="CropController updated">
+      <created>1733412065162</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1733412065162</updated>
+    </task>
+    <task id="LOCAL-00064" summary="EquipmentController updated">
+      <created>1733412080282</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1733412080282</updated>
+    </task>
+    <task id="LOCAL-00065" summary="FieldController updated">
+      <created>1733412097832</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1733412097833</updated>
+    </task>
+    <task id="LOCAL-00066" summary="MonitoringLogController updated">
+      <created>1733412109928</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1733412109928</updated>
+    </task>
+    <task id="LOCAL-00067" summary="StaffController updated">
+      <created>1733412122756</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1733412122756</updated>
+    </task>
+    <task id="LOCAL-00068" summary="VehicleController updated">
+      <created>1733412137131</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1733412137131</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -481,12 +482,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="LogModel done" />
-    <MESSAGE value="StaffModel done" />
-    <MESSAGE value="userModel updated" />
-    <MESSAGE value="vehicleModel done" />
-    <MESSAGE value="db updated" />
-    <MESSAGE value="remove file and updated" />
     <MESSAGE value="remove the old files" />
     <MESSAGE value="lib updated" />
     <MESSAGE value="dated" />
@@ -506,6 +501,12 @@
     <MESSAGE value="update index" />
     <MESSAGE value="bug fix" />
     <MESSAGE value="updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated" />
+    <MESSAGE value="CropController updated" />
+    <MESSAGE value="EquipmentController updated" />
+    <MESSAGE value="FieldController updated" />
+    <MESSAGE value="MonitoringLogController updated" />
+    <MESSAGE value="StaffController updated" />
+    <MESSAGE value="VehicleController updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="VehicleController updated" />
   </component>
 </project>
