@@ -44,7 +44,7 @@ $('#cropForm').on('submit', function (e) {
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: "http://localhost:5058/greenShadowBackend/api/v1/crops",
+                url: "http://localhost:8080/cropBackend/api/v1/crops",
                 type: "POST",
                 data: formData,
                 processData: false,
@@ -179,7 +179,7 @@ $('#updateFieldModalButton').on('click',async function (){
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: `http://localhost:5058/greenShadowBackend/api/v1/crops/${cropCode}`,
+                url: `http://localhost:8080/cropBackend/api/v1/crops/${cropCode}`,
                 type: "PUT",
                 data: formData,
                 processData: false,
@@ -246,7 +246,7 @@ $(document).ready(function() {
     $('#confirmCropDeleteButton').on('click', function () {
         const cardId = $(this).data('card-id');
         $.ajax({
-            url: `http://localhost:5058/greenShadowBackend/api/v1/crops/${cardId}`,
+            url: `http://localhost:8080/cropBackend/api/v1/crops/${cardId}`,
             type: 'DELETE',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')
@@ -279,7 +279,7 @@ export class LoadCards {
     loadAllCropCard() {
         return new Promise((resolve, reject) => {
             $.ajax({
-                url: "http://localhost:5058/greenShadowBackend/api/v1/crops",
+                url: "http://localhost:8080/cropBackend/api/v1/crops",
                 type: "GET",
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')

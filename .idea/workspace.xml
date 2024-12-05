@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d14f6a8-646a-42c7-a0b2-7f1cf4609b6e" name="Changes" comment="update index">
+    <list default="true" id="1d14f6a8-646a-42c7-a0b2-7f1cf4609b6e" name="Changes" comment="updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/sideBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/sideBar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/CropController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/CropController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/EquipmentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/EquipmentController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/FieldController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/FieldController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/MonitoringLogController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/MonitoringLogController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/StaffController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/StaffController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/VehicleController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/VehicleController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,27 +116,8 @@
       <workItem from="1733384908225" duration="1078000" />
       <workItem from="1733407742148" duration="1427000" />
       <workItem from="1733409205819" duration="199000" />
-    </task>
-    <task id="LOCAL-00011" summary="updated structure">
-      <created>1730617105668</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1730617105668</updated>
-    </task>
-    <task id="LOCAL-00012" summary="remove old One">
-      <created>1730617125165</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1730617125165</updated>
-    </task>
-    <task id="LOCAL-00013" summary="styles Updated">
-      <created>1730617137539</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1730617137539</updated>
+      <workItem from="1733409426434" duration="682000" />
+      <workItem from="1733411650681" duration="384000" />
     </task>
     <task id="LOCAL-00014" summary="SignUp done">
       <created>1730703428455</created>
@@ -456,7 +441,28 @@
       <option name="project" value="LOCAL" />
       <updated>1733408908724</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="bug fix">
+      <created>1733409464072</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1733409464073</updated>
+    </task>
+    <task id="LOCAL-00061" summary="updated">
+      <created>1733409482934</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1733409482934</updated>
+    </task>
+    <task id="LOCAL-00062" summary="updated">
+      <created>1733409489662</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1733409489662</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -475,7 +481,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fix bug in crop model and complete its implementation" />
     <MESSAGE value="LogModel done" />
     <MESSAGE value="StaffModel done" />
     <MESSAGE value="userModel updated" />
@@ -497,9 +502,10 @@
     <MESSAGE value="StaffController updated with ajax" />
     <MESSAGE value="UserController updated with ajax" />
     <MESSAGE value="VehicleController updated with ajax" />
-    <MESSAGE value="updated" />
     <MESSAGE value="new updated" />
     <MESSAGE value="update index" />
-    <option name="LAST_COMMIT_MESSAGE" value="update index" />
+    <MESSAGE value="bug fix" />
+    <MESSAGE value="updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated" />
   </component>
 </project>
