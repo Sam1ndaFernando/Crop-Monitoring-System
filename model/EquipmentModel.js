@@ -1,75 +1,68 @@
 export class EquipmentModel {
 
     constructor(equipmentCode, name, type, status, availableCount, staffCodeList = [], fieldList = []) {
-        this.EquipmentCode = equipmentCode;
-        this.Equipmentname = name;
-        this.EquipmenType = type;
-        this.EquipmenStatus = status;
-        this.EquipmentAvailableCount = availableCount;
-        this.EquipmentStaffCodeList = staffCodeList;
-        this.EquipmentFieldList = fieldList;
+        this._equipmentCode = equipmentCode;
+        this._name = name;
+        this._type = type;
+        this._status = status;
+        this._availableCount = availableCount;
+        this._staffCodeList = staffCodeList;
+        this._fieldList = fieldList;
     }
 
-    // Getter and Setter for EquipmentCode
-    getEquipmentCode() {
-        return this.EquipmentCode;
+    get equipmentCode() {
+        return this._equipmentCode;
     }
 
-    setEquipmentCode(equipmentCode) {
-        this.EquipmentCode = equipmentCode;
+    set equipmentCode(value) {
+        this._equipmentCode = value;
     }
 
-    // Getter and Setter for Equipmentname
-    getEquipmentname() {
-        return this.Equipmentname;
+    get name() {
+        return this._name;
     }
 
-    setEquipmentname(name) {
-        this.Equipmentname = name;
+    set name(value) {
+        this._name = value;
     }
 
-    // Getter and Setter for EquipmenType
-    getEquipmenType() {
-        return this.EquipmenType;
+    get type() {
+        return this._type;
     }
 
-    setEquipmenType(type) {
-        this.EquipmenType = type;
+    set type(value) {
+        this._type = value;
     }
 
-    // Getter and Setter for EquipmenStatus
-    getEquipmenStatus() {
-        return this.EquipmenStatus;
+    get status() {
+        return this._status;
     }
 
-    setEquipmenStatus(status) {
-        this.EquipmenStatus = status;
+    set status(value) {
+        this._status = value;
     }
 
-    // Getter and Setter for EquipmentAvailableCount
-    getEquipmentAvailableCount() {
-        return this.EquipmentAvailableCount;
+    get availableCount() {
+        return this._availableCount;
     }
 
-    setEquipmentAvailableCount(availableCount) {
-        this.EquipmentAvailableCount = availableCount;
+    set availableCount(value) {
+        this._availableCount = value;
     }
 
-    // Getter and Setter for EquipmentStaffCodeList
-    getEquipmentStaffCodeList() {
-        return this.EquipmentStaffCodeList;
+    get staffCodeList() {
+        return this._staffCodeList;
     }
 
-    setEquipmentStaffCodeList(staffCodeList) {
-        this.EquipmentStaffCodeList = staffCodeList;
+    set staffCodeList(value) {
+        this._staffCodeList = value;
     }
 
-    // Getter and Setter for EquipmentFieldList
-    getEquipmentFieldList() {
-        return this.EquipmentFieldList;
+    get fieldList() {
+        return this._fieldList;
     }
 
-    setEquipmentFieldList(fieldList) {
-        this.EquipmentFieldList = fieldList;
+    set fieldList(value) {
+        this._fieldList = value;
     }
 }
