@@ -59,7 +59,7 @@ let cardCount = 0;
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
                 $.ajax({
-                    url: "http://localhost:5058/greenShadowBackend/api/v1/logs",
+                    url: "http://localhost:8080/cropBackend/api/v1/logs",
                     type: "POST",
                     data: formData,
                     processData: false,
@@ -219,7 +219,7 @@ let cardCount = 0;
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
                 $.ajax({
-                    url: `http://localhost:5058/greenShadowBackend/api/v1/logs/${logCode}`,
+                    url: `http://localhost:8080/cropBackend/api/v1/logs/${logCode}`,
                     type: "PUT",
                     data: formData,
                     processData: false,
@@ -267,7 +267,7 @@ let cardCount = 0;
         const cardId = $(this).data('card-id');
 
         $.ajax({
-            url: `http://localhost:5058/greenShadowBackend/api/v1/logs/${cardId}`,
+            url: `http://localhost:8080/cropBackend/api/v1/logs/${cardId}`,
             type: 'DELETE',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')
@@ -426,7 +426,7 @@ let cardCount = 0;
         loadAllLogsDetails(){
             return new Promise((resolve, reject) => {
                 $.ajax({
-                    url: "http://localhost:5058/greenShadowBackend/api/v1/logs",
+                    url: "http://localhost:8080/cropBackend/api/v1/logs",
                     type: "GET",
                     headers: {
                         'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')
