@@ -1,6 +1,6 @@
 # Green Shadow Crop Monitoring System
 
-Green Shadow Crop Monitoring System is a robust backend application built using **Spring Boot**, designed to manage crop-related data, field equipment, logs, and staff activities in an agricultural environment. This system provides user management, vehicle tracking, and various crop management features while ensuring data security with JWT-based authentication.
+The **Green Shadow Crop Monitoring System** is a robust backend application built using **Spring Boot**, designed to manage crop-related data, field equipment, logs, and staff activities in an agricultural environment. This system provides features such as user management, vehicle tracking, and crop monitoring while ensuring data security with **JWT-based authentication**.
 
 ---
 
@@ -39,45 +39,18 @@ Green Shadow Crop Monitoring System is a robust backend application built using 
 
 ## Technology Stack
 
-- **Programming Language:** Java 21  
-- **Framework:** Spring Boot  
-- **Build Tool:** Gradle  
-- **Database:** MySQL  
-- **ORM:** Hibernate  
-- **Security:** JWT Authentication  
-
----
-
-## Prerequisites
-
-- **Java 21** installed.  
-- **Gradle** installed.  
-- MySQL Database setup with appropriate credentials.  
-- Optional: IDE such as IntelliJ IDEA or Eclipse for development.  
-
----
-
-## Main Services
-
-- **Field Service**: Allocates and manages cultivation fields.  
-- **Crop Service**: Tracks crop information, including types and growth stages.  
-- **Staff Service**: Manages human resources and assignments.  
-- **Monitoring Service**: Records and tracks crop-related observations and activities.  
-- **Vehicle Service**: Handles vehicle management for field operations.  
-- **Equipment Service**: Monitors agricultural equipment usage and availability.  
-- **Auth Service**: Manages secure user authentication and role-based permissions.  
+- **Backend**: Spring Boot (REST APIs, Security, Data Persistence)  
+- **Database**: MySQL  
+- **Frontend**: HTML, CSS, JavaScript, jQuery, and AJAX  
+- **Authentication**: Spring Security with JWT  
+- **Analysis Features**: Spatial and temporal data evaluation  
 
 ---
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-## Contact
 
-For any questions or suggestions, feel free to reach out to the repository maintainer:  
-[Saminda Fernando](https://github.com/Sam1ndaFernando)
-
----
