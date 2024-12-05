@@ -40,7 +40,7 @@ $('#btn-signIn').on('click',function (){
     console.log("SIGN IN CALLED")
 
     $.ajax({
-        url: 'http://localhost:5058/greenShadowBackend/api/v1/auth/signIn',
+        url: 'http://localhost:8080/cropBackend/api/v1/auth/signIn',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(signInDTO),
