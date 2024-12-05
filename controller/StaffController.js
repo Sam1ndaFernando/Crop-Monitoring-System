@@ -79,7 +79,7 @@ $('#addFieldButtonInStaff').on('click',(e)=>{
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: "http://localhost:5058/greenShadowBackend/api/v1/staff",
+                url: "http://localhost:8080/cropBackend/api/v1/staff",
                 type: "POST",
                 contentType: "application/json",
                 headers: {
@@ -235,7 +235,7 @@ $('#updateMemberButton').on('click',function (){
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: `http://localhost:5058/greenShadowBackend/api/v1/staff/${memberCode}`, // Use the vehicleId from the clicked row
+                url: `http://localhost:8080/cropBackend/api/v1/staff/${memberCode}`, // Use the vehicleId from the clicked row
                 type: 'PUT',
                 contentType: 'application/json',
                 headers: {
@@ -308,7 +308,7 @@ $('#confirmDeleteYes').on('click', function () {
     const index = $(this).data('index');
 
     $.ajax({
-        url: `http://localhost:5058/greenShadowBackend/api/v1/staff/${index}`,
+        url: `http://localhost:8080/cropBackend/api/v1/staff/${index}`,
         type: 'DELETE',
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')
@@ -473,7 +473,7 @@ export class LoadAllStaffMember {
 
         return new Promise((resolve, reject) => {
             $.ajax({
-                url: "http://localhost:5058/greenShadowBackend/api/v1/staff",
+                url: "http://localhost:8080/cropBackend/api/v1/staff",
                 type: "GET",
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')
