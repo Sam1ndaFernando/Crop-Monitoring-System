@@ -1,117 +1,153 @@
-const vehiclesDatabase = [];
+// Define API base URLs
+const API_URL = "http://localhost:8081/cropBackend/api/v1/vehicles";
+const STAFF_API_URL = "http://localhost:8081/cropBackend/api/v1/staff";
 
-// Dummy data for staff, this can be fetched from an API or backend
-const staffList = ['John Doe', 'Jane Smith', 'Michael Brown', 'Sarah Williams'];
-
-// Populate the staff options dynamically when the page loads
-function populateStaffOptions() {
-    const staffSelect = document.getElementById('staff');
-    staffList.forEach(staff => {
-        const option = document.createElement('option');
-        option.value = staff;
-        option.textContent = staff;
-        staffSelect.appendChild(option);
+// Fetch and display vehicles in the table
+function fetchVehicles() {
+    $.get(API_URL, function (vehicles) {
+        const vehicleTableBody = $('#vehicleTable tbody');
+        vehicleTableBody.empty();
+        vehicles.forEach((vehicle) => {
+            vehicleTableBody.append(`
+                <tr>
+                    <td>${vehicle.vehicleCode}</td>
+                    <td>${vehicle.licensePlateNumber}</td>
+                    <td>${vehicle.name}</td>
+                    <td>${vehicle.category}</td>
+                    <td>${vehicle.fuelType}</td>
+                    <td>${vehicle.status}</td>
+                    <td>${vehicle.remark}</td>
+                    <td>${vehicle.memberCode}</td>
+                    <td>
+                        <button class="edit-btn btn btn-warning btn-sm" data-id="${vehicle.vehicleCode}">Edit</button>
+                        <button class="delete-btn btn btn-danger btn-sm" data-id="${vehicle.vehicleCode}">Delete</button>
+                    </td>
+                </tr>
+            `);
+        });
     });
 }
 
-// Handle the form submission (Save or Update)
-document.getElementById('vehicleForm').addEventListener('submit', function (event) {
+// Populate staff dropdown and set up a change listener
+function populateStaffOptions() {
+    $.get(STAFF_API_URL, function (staffList) {
+        const staffDropdown = $('#staff');
+        staffDropdown.empty();
+        staffDropdown.append(`<option value="" disabled selected>Select staff</option>`);
+        staffList.forEach((staff) => {
+            staffDropdown.append(`<option value="${staff.code}">${staff.name}</option>`);
+        });
+
+        // Event listener for dropdown change
+        staffDropdown.change(function () {
+            const selectedStaffCode = $(this).val();
+            if (selectedStaffCode) {
+                fetchStaffDetails(selectedStaffCode);
+            }
+        });
+    });
+}
+
+// Fetch details of the selected staff and populate the fields
+function fetchStaffDetails(staffCode) {
+    $.get(`${STAFF_API_URL}/${staffCode}`, function (staff) {
+        // Assuming the staff object contains fields like `name`, `email`, and `department`
+        $('#staffDetails').html(`
+            <div><strong>Name:</strong> ${staff.name}</div>
+            <div><strong>Email:</strong> ${staff.email}</div>
+            <div><strong>Department:</strong> ${staff.department}</div>
+        `);
+    });
+}
+
+// Add or update vehicle
+$('#vehicleForm').submit(function (event) {
     event.preventDefault();
 
-    // Get values from the form
-    const vehicleCode = document.getElementById('vehicleCode').value.trim();
-    const licensePlateNumber = document.getElementById('licensePlateNumber').value.trim();
-    const vehicleName = document.getElementById('vehicleName').value.trim();
-    const category = document.getElementById('category').value.trim();
-    const fuelType = document.getElementById('fuelType').value.trim();
-    const status = document.getElementById('status').value.trim();
-    const remark = document.getElementById('remark').value.trim();
-    const staff = document.getElementById('staff').value.trim();
+    const vehicleData = {
+        vehicleCode: $('#vehicleCode').val().trim(),
+        licensePlateNumber: $('#licensePlateNumber').val().trim(),
+        name: $('#vehicleName').val().trim(),
+        category: $('#category').val().trim(),
+        fuelType: $('#fuelType').val().trim(),
+        status: $('#status').val().trim(),
+        remark: $('#remark').val().trim(),
+        memberCode: $('#staff').val().trim(),
+    };
 
-    // Check if the vehicle already exists in the database for update
-    const existingVehicleIndex = vehiclesDatabase.findIndex(vehicle => vehicle.vehicleCode === vehicleCode);
+    const isUpdate = $('#submitVehicle').text() === 'Update Vehicle';
 
-    if (existingVehicleIndex !== -1) {
-        // Update existing vehicle
-        vehiclesDatabase[existingVehicleIndex] = { vehicleCode, licensePlateNumber, vehicleName, category, fuelType, status, remark, staff };
-        alert('Vehicle updated successfully!');
-    } else {
-        // Save new vehicle
-        vehiclesDatabase.push({ vehicleCode, licensePlateNumber, vehicleName, category, fuelType, status, remark, staff });
-        alert('Vehicle added successfully!');
-    }
-
-    // Clear form and reset
-    document.getElementById('vehicleForm').reset();
-
-    // Reset the submit button text back to "Submit"
-    document.getElementById('submitVehicle').textContent = "Submit";
-
-    // Update vehicle table
-    updateVehicleTable();
-});
-
-// Update the vehicle table
-function updateVehicleTable() {
-    const vehicleTableBody = document.getElementById('vehicleTable').getElementsByTagName('tbody')[0];
-    vehicleTableBody.innerHTML = ''; // Clear table body
-
-    vehiclesDatabase.forEach(vehicle => {
-        const row = vehicleTableBody.insertRow();
-        row.innerHTML = `
-            <td>${vehicle.vehicleCode}</td>
-            <td>${vehicle.licensePlateNumber}</td>
-            <td>${vehicle.vehicleName}</td>
-            <td>${vehicle.category}</td>
-            <td>${vehicle.fuelType}</td>
-            <td>${vehicle.status}</td>
-            <td>${vehicle.remark || '-'}</td>
-            <td>${vehicle.staff}</td>
-            <td>
-                <button class="btn btn-primary btn-sm edit-btn" data-vehicle-code="${vehicle.vehicleCode}">Edit</button>
-                <button class="btn btn-danger btn-sm delete-btn" data-vehicle-code="${vehicle.vehicleCode}">Delete</button>
-            </td>
-        `;
-    });
-}
-
-// Handle deleting a vehicle entry
-document.addEventListener("click", function (event) {
-    if (event.target && event.target.classList.contains("delete-btn")) {
-        const vehicleCode = event.target.getAttribute('data-vehicle-code');
-        if (confirm("Are you sure you want to delete this vehicle entry?")) {
-            const vehicleIndex = vehiclesDatabase.findIndex(vehicle => vehicle.vehicleCode === vehicleCode);
-            if (vehicleIndex !== -1) {
-                vehiclesDatabase.splice(vehicleIndex, 1); // Remove vehicle from "database"
-                alert("Vehicle entry deleted successfully.");
-                updateVehicleTable(); // Re-render the table after deletion
+    if (isUpdate) {
+        $.ajax({
+            url: `${API_URL}/${vehicleData.vehicleCode}`,
+            method: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify(vehicleData),
+            success: function () {
+                alert('Vehicle updated successfully!');
+                fetchVehicles();
+            },
+            error: function () {
+                alert('Failed to update vehicle.');
             }
-        }
+        });
+    } else {
+        $.ajax({
+            url: API_URL,
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(vehicleData),
+            success: function () {
+                alert('Vehicle added successfully!');
+                fetchVehicles();
+            },
+            error: function () {
+                alert('Failed to add vehicle.');
+            }
+        });
+    }
+
+    $('#vehicleForm')[0].reset();
+    $('#vehicleCode').prop('disabled', false);
+    $('#submitVehicle').text('Submit');
+});
+
+// Edit vehicle (prefill form)
+$(document).on('click', '.edit-btn', function () {
+    const vehicleCode = $(this).data('id');
+    $.get(`${API_URL}/${vehicleCode}`, function (vehicle) {
+        $('#vehicleCode').val(vehicle.vehicleCode).prop('disabled', true);
+        $('#licensePlateNumber').val(vehicle.licensePlateNumber);
+        $('#vehicleName').val(vehicle.name);
+        $('#category').val(vehicle.category);
+        $('#fuelType').val(vehicle.fuelType);
+        $('#status').val(vehicle.status);
+        $('#remark').val(vehicle.remark);
+        $('#staff').val(vehicle.memberCode);
+        $('#submitVehicle').text('Update Vehicle');
+    });
+});
+
+// Delete vehicle
+$(document).on('click', '.delete-btn', function () {
+    const vehicleCode = $(this).data('id');
+    if (confirm('Are you sure you want to delete this vehicle?')) {
+        $.ajax({
+            url: `${API_URL}/${vehicleCode}`,
+            method: 'DELETE',
+            success: function () {
+                alert('Vehicle deleted successfully!');
+                fetchVehicles();
+            },
+            error: function () {
+                alert('Failed to delete vehicle.');
+            }
+        });
     }
 });
 
-// Handle updating a vehicle entry
-document.addEventListener("click", function (event) {
-    if (event.target && event.target.classList.contains("edit-btn")) {
-        const vehicleCode = event.target.getAttribute('data-vehicle-code');
-        const vehicle = vehiclesDatabase.find(vehicle => vehicle.vehicleCode === vehicleCode);
-
-        if (vehicle) {
-            // Pre-fill the form with the vehicle data for editing
-            document.getElementById("vehicleCode").value = vehicle.vehicleCode;
-            document.getElementById("licensePlateNumber").value = vehicle.licensePlateNumber;
-            document.getElementById("vehicleName").value = vehicle.vehicleName;
-            document.getElementById("category").value = vehicle.category;
-            document.getElementById("fuelType").value = vehicle.fuelType;
-            document.getElementById("status").value = vehicle.status;
-            document.getElementById("remark").value = vehicle.remark || '';
-            document.getElementById("staff").value = vehicle.staff;
-
-            // Change the button text to indicate the form is in "Update" mode
-            document.getElementById("submitVehicle").textContent = "Update Vehicle";
-        }
-    }
+// Initialize on page load
+$(document).ready(function () {
+    populateStaffOptions();
+    fetchVehicles();
 });
-
-// Call this function to populate the staff select options when the page loads
-populateStaffOptions();
