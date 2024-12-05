@@ -1,74 +1,39 @@
 export class LogModel {
     constructor(logCode, date, logDetails, observedImage, staffList = [], cropList = [], fieldList = []) {
-        this.LogCode = logCode;
-        this.Logdate = date;
-        this.LogDetails = logDetails;
-        this.ObservedImage = observedImage;
-        this.StaffList = staffList;
-        this.CropList = cropList;
-        this.FieldList = fieldList;
+        this._logCode = logCode;
+        this._date = date;
+        this._logDetails = logDetails;
+        this._observedImage = observedImage;
+        this._staffList = staffList;
+        this._cropList = cropList;
+        this._fieldList = fieldList;
     }
 
-    // Getter and Setter for LogCode
-    getLogCode() {
-        return this.LogCode;
+    get logCode() {
+        return this._logCode;
     }
 
-    setLogCode(logCode) {
-        this.LogCode = logCode;
+    get date() {
+        return this._date;
     }
 
-    // Getter and Setter for Logdate
-    getLogDate() {
-        return this.Logdate;
+    get logDetails() {
+        return this._logDetails;
     }
 
-    setLogDate(date) {
-        this.Logdate = date;
+    get observedImage() {
+        return this._observedImage;
     }
 
-    // Getter and Setter for LogDetails
-    getLogDetails() {
-        return this.LogDetails;
+    get staffList() {
+        return this._staffList;
     }
 
-    setLogDetails(logDetails) {
-        this.LogDetails = logDetails;
+    get cropList() {
+        return this._cropList;
     }
 
-    // Getter and Setter for ObservedImage
-    getObservedImage() {
-        return this.ObservedImage;
-    }
-
-    setObservedImage(observedImage) {
-        this.ObservedImage = observedImage;
-    }
-
-    // Getter and Setter for StaffList
-    getStaffList() {
-        return this.StaffList;
-    }
-
-    setStaffList(staffList) {
-        this.StaffList = staffList;
-    }
-
-    // Getter and Setter for CropList
-    getCropList() {
-        return this.CropList;
-    }
-
-    setCropList(cropList) {
-        this.CropList = cropList;
-    }
-
-    // Getter and Setter for FieldList
-    getFieldList() {
-        return this.FieldList;
-    }
-
-    setFieldList(fieldList) {
-        this.FieldList = fieldList;
+    get fieldList() {
+        return this._fieldList;
     }
 }
