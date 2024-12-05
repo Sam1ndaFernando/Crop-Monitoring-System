@@ -1,104 +1,138 @@
 export class FieldModel {
-    constructor(fieldCode, name, location, extentSize, fieldImage1, fieldImage2, equipmentsList = [], staffList = [], logList = [], cropList = []) {
-        this.FieldCode = fieldCode;
-        this.FieldName = name;
-        this.FieldLocation = location;
-        this.FieldExtentSize = extentSize;
-        this.FieldImage1 = fieldImage1;
-        this.FieldImage2 = fieldImage2;
-        this.EquipmentsList = equipmentsList;
-        this.StaffList = staffList;
-        this.LogList = logList;
-        this.CropList = cropList;
+    constructor(
+        fieldCode,
+        name,
+        location,
+        extentSize = 0,
+        fieldImage1 = null,
+        fieldImage2 = null,
+        equipmentsList = [],
+        staffList = [],
+        logList = [],
+        cropList = []
+    ) {
+        this._fieldCode = fieldCode;
+        this._name = name;
+        this._location = location;
+        this._extentSize = extentSize;
+        this._fieldImage1 = fieldImage1;
+        this._fieldImage2 = fieldImage2;
+        this._equipmentsList = Array.isArray(equipmentsList) ? equipmentsList : [];
+        this._staffList = Array.isArray(staffList) ? staffList : [];
+        this._logList = Array.isArray(logList) ? logList : [];
+        this._cropList = Array.isArray(cropList) ? cropList : [];
     }
 
-    // Getter and Setter for FieldCode
-    getFieldCode() {
-        return this.FieldCode;
+    // Field code
+    get fieldCode() {
+        return this._fieldCode;
+    }
+    set fieldCode(value) {
+        if (!value) throw new Error("Field code is required.");
+        this._fieldCode = value;
     }
 
-    setFieldCode(fieldCode) {
-        this.FieldCode = fieldCode;
+    // Name
+    get name() {
+        return this._name;
+    }
+    set name(value) {
+        if (!value) throw new Error("Field name is required.");
+        this._name = value;
     }
 
-    // Getter and Setter for FieldName
-    getFieldName() {
-        return this.FieldName;
+    // Location
+    get location() {
+        return this._location;
+    }
+    set location(value) {
+        if (!value) throw new Error("Field location is required.");
+        this._location = value;
     }
 
-    setFieldName(name) {
-        this.FieldName = name;
+    // Extent size
+    get extentSize() {
+        return this._extentSize;
+    }
+    set extentSize(value) {
+        if (isNaN(value) || value < 0) throw new Error("Extent size must be a non-negative number.");
+        this._extentSize = value;
     }
 
-    // Getter and Setter for FieldLocation
-    getFieldLocation() {
-        return this.FieldLocation;
+    // Field images
+    get fieldImage1() {
+        return this._fieldImage1;
+    }
+    set fieldImage1(value) {
+        this._fieldImage1 = value;
     }
 
-    setFieldLocation(location) {
-        this.FieldLocation = location;
+    get fieldImage2() {
+        return this._fieldImage2;
+    }
+    set fieldImage2(value) {
+        this._fieldImage2 = value;
     }
 
-    // Getter and Setter for FieldExtentSize
-    getFieldExtentSize() {
-        return this.FieldExtentSize;
+    // Equipments list
+    get equipmentsList() {
+        return this._equipmentsList;
+    }
+    set equipmentsList(value) {
+        if (!Array.isArray(value)) throw new Error("Equipments list must be an array.");
+        this._equipmentsList = value;
     }
 
-    setFieldExtentSize(extentSize) {
-        this.FieldExtentSize = extentSize;
+    addEquipment(equipment) {
+        this._equipmentsList.push(equipment);
     }
 
-    // Getter and Setter for FieldImage1
-    getFieldImage1() {
-        return this.FieldImage1;
+    removeEquipment(equipmentCode) {
+        this._equipmentsList = this._equipmentsList.filter(
+            (equipment) => equipment.equipmentCode !== equipmentCode
+        );
     }
 
-    setFieldImage1(fieldImage1) {
-        this.FieldImage1 = fieldImage1;
+    // Staff list
+    get staffList() {
+        return this._staffList;
+    }
+    set staffList(value) {
+        if (!Array.isArray(value)) throw new Error("Staff list must be an array.");
+        this._staffList = value;
     }
 
-    // Getter and Setter for FieldImage2
-    getFieldImage2() {
-        return this.FieldImage2;
+    addStaff(staff) {
+        this._staffList.push(staff);
     }
 
-    setFieldImage2(fieldImage2) {
-        this.FieldImage2 = fieldImage2;
+    removeStaff(staffCode) {
+        this._staffList = this._staffList.filter((staff) => staff.staffCode !== staffCode);
     }
 
-    // Getter and Setter for EquipmentsList
-    getEquipmentsList() {
-        return this.EquipmentsList;
+    // Log list
+    get logList() {
+        return this._logList;
+    }
+    set logList(value) {
+        if (!Array.isArray(value)) throw new Error("Log list must be an array.");
+        this._logList = value;
     }
 
-    setEquipmentsList(equipmentsList) {
-        this.EquipmentsList = equipmentsList;
+    addLog(log) {
+        this._logList.push(log);
     }
 
-    // Getter and Setter for StaffList
-    getStaffList() {
-        return this.StaffList;
+    // Crop list
+    get cropList() {
+        return this._cropList;
+    }
+    set cropList(value) {
+        if (!Array.isArray(value)) throw new Error("Crop list must be an array.");
+        this._cropList = value;
     }
 
-    setStaffList(staffList) {
-        this.StaffList = staffList;
-    }
-
-    // Getter and Setter for LogList
-    getLogList() {
-        return this.LogList;
-    }
-
-    setLogList(logList) {
-        this.LogList = logList;
-    }
-
-    // Getter and Setter for CropList
-    getCropList() {
-        return this.CropList;
-    }
-
-    setCropList(cropList) {
-        this.CropList = cropList;
+    addCrop(crop) {
+        this._cropList.push(crop);
     }
 }
