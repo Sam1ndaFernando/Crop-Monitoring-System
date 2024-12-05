@@ -20,195 +20,176 @@ export class StaffModel {
         logList = [],
         equipmentList = []
     ) {
-        this.MemberCode = memberCode;
-        this.FirstName = firstName;
-        this.LastName = lastName;
-        this.JoinedDate = joinedDate;
-        this.DateOfBirth = dateOfBirth;
-        this.Gender = gender;
-        this.Designation = designation;
-        this.AddressLine1 = addressLine1;
-        this.AddressLine2 = addressLine2;
-        this.AddressLine3 = addressLine3;
-        this.AddressLine4 = addressLine4;
-        this.AddressLine5 = addressLine5;
-        this.ContactNo = contactNo;
-        this.Email = email;
-        this.Role = role;
-        this.VehicleList = vehicleList;
-        this.FieldList = fieldList;
-        this.LogList = logList;
-        this.EquipmentList = equipmentList;
+        this._memberCode = memberCode;
+        this._firstName = firstName;
+        this._lastName = lastName;
+        this._joinedDate = joinedDate;
+        this._dateOfBirth = dateOfBirth;
+        this._gender = gender;
+        this._designation = designation;
+        this._addressLine1 = addressLine1;
+        this._addressLine2 = addressLine2;
+        this._addressLine3 = addressLine3;
+        this._addressLine4 = addressLine4;
+        this._addressLine5 = addressLine5;
+        this._contactNo = contactNo;
+        this._email = email;
+        this._role = role;
+        this._vehicleList = vehicleList;
+        this._fieldList = fieldList;
+        this._logList = logList;
+        this._equipmentList = equipmentList;
     }
 
-    // Getter and Setter for MemberCode
-    getMemberCode() {
-        return this.MemberCode;
+    get memberCode() {
+        return this._memberCode;
     }
 
-    setMemberCode(memberCode) {
-        this.MemberCode = memberCode;
+    set memberCode(value) {
+        this._memberCode = value;
     }
 
-    // Getter and Setter for FirstName
-    getFirstName() {
-        return this.FirstName;
+    get firstName() {
+        return this._firstName;
     }
 
-    setFirstName(firstName) {
-        this.FirstName = firstName;
+    set firstName(value) {
+        this._firstName = value;
     }
 
-    // Getter and Setter for LastName
-    getLastName() {
-        return this.LastName;
+    get lastName() {
+        return this._lastName;
     }
 
-    setLastName(lastName) {
-        this.LastName = lastName;
+    set lastName(value) {
+        this._lastName = value;
     }
 
-    // Getter and Setter for JoinedDate
-    getJoinedDate() {
-        return this.JoinedDate;
+    get joinedDate() {
+        return this._joinedDate;
     }
 
-    setJoinedDate(joinedDate) {
-        this.JoinedDate = joinedDate;
+    set joinedDate(value) {
+        this._joinedDate = value;
     }
 
-    // Getter and Setter for DateOfBirth
-    getDateOfBirth() {
-        return this.DateOfBirth;
+    get dateOfBirth() {
+        return this._dateOfBirth;
     }
 
-    setDateOfBirth(dateOfBirth) {
-        this.DateOfBirth = dateOfBirth;
+    set dateOfBirth(value) {
+        this._dateOfBirth = value;
     }
 
-    // Getter and Setter for Gender
-    getGender() {
-        return this.Gender;
+    get gender() {
+        return this._gender;
     }
 
-    setGender(gender) {
-        this.Gender = gender;
+    set gender(value) {
+        this._gender = value;
     }
 
-    // Getter and Setter for Designation
-    getDesignation() {
-        return this.Designation;
+    get designation() {
+        return this._designation;
     }
 
-    setDesignation(designation) {
-        this.Designation = designation;
+    set designation(value) {
+        this._designation = value;
     }
 
-    // Getter and Setter for AddressLine1
-    getAddressLine1() {
-        return this.AddressLine1;
+    get addressLine1() {
+        return this._addressLine1;
     }
 
-    setAddressLine1(addressLine1) {
-        this.AddressLine1 = addressLine1;
+    set addressLine1(value) {
+        this._addressLine1 = value;
     }
 
-    // Getter and Setter for AddressLine2
-    getAddressLine2() {
-        return this.AddressLine2;
+    get addressLine2() {
+        return this._addressLine2;
     }
 
-    setAddressLine2(addressLine2) {
-        this.AddressLine2 = addressLine2;
+    set addressLine2(value) {
+        this._addressLine2 = value;
     }
 
-    // Getter and Setter for AddressLine3
-    getAddressLine3() {
-        return this.AddressLine3;
+    get addressLine3() {
+        return this._addressLine3;
     }
 
-    setAddressLine3(addressLine3) {
-        this.AddressLine3 = addressLine3;
+    set addressLine3(value) {
+        this._addressLine3 = value;
     }
 
-    // Getter and Setter for AddressLine4
-    getAddressLine4() {
-        return this.AddressLine4;
+    get addressLine4() {
+        return this._addressLine4;
     }
 
-    setAddressLine4(addressLine4) {
-        this.AddressLine4 = addressLine4;
+    set addressLine4(value) {
+        this._addressLine4 = value;
     }
 
-    // Getter and Setter for AddressLine5
-    getAddressLine5() {
-        return this.AddressLine5;
+    get addressLine5() {
+        return this._addressLine5;
     }
 
-    setAddressLine5(addressLine5) {
-        this.AddressLine5 = addressLine5;
+    set addressLine5(value) {
+        this._addressLine5 = value;
     }
 
-    // Getter and Setter for ContactNo
-    getContactNo() {
-        return this.ContactNo;
+    get contactNo() {
+        return this._contactNo;
     }
 
-    setContactNo(contactNo) {
-        this.ContactNo = contactNo;
+    set contactNo(value) {
+        this._contactNo = value;
     }
 
-    // Getter and Setter for Email
-    getEmail() {
-        return this.Email;
+    get email() {
+        return this._email;
     }
 
-    setEmail(email) {
-        this.Email = email;
+    set email(value) {
+        this._email = value;
     }
 
-    // Getter and Setter for Role
-    getRole() {
-        return this.Role;
+    get role() {
+        return this._role;
     }
 
-    setRole(role) {
-        this.Role = role;
+    set role(value) {
+        this._role = value;
     }
 
-    // Getter and Setter for VehicleList
-    getVehicleList() {
-        return this.VehicleList;
+    get vehicleList() {
+        return this._vehicleList;
     }
 
-    setVehicleList(vehicleList) {
-        this.VehicleList = vehicleList;
+    set vehicleList(value) {
+        this._vehicleList = value;
     }
 
-    // Getter and Setter for FieldList
-    getFieldList() {
-        return this.FieldList;
+    get fieldList() {
+        return this._fieldList;
     }
 
-    setFieldList(fieldList) {
-        this.FieldList = fieldList;
+    set fieldList(value) {
+        this._fieldList = value;
     }
 
-    // Getter and Setter for LogList
-    getLogList() {
-        return this.LogList;
+    get logList() {
+        return this._logList;
     }
 
-    setLogList(logList) {
-        this.LogList = logList;
+    set logList(value) {
+        this._logList = value;
     }
 
-    // Getter and Setter for EquipmentList
-    getEquipmentList() {
-        return this.EquipmentList;
+    get equipmentList() {
+        return this._equipmentList;
     }
 
-    setEquipmentList(equipmentList) {
-        this.EquipmentList = equipmentList;
+    set equipmentList(value) {
+        this._equipmentList = value;
     }
 }
