@@ -51,7 +51,7 @@ $('#fieldForm').on('submit', function (e) {
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: "http://localhost:5058/greenShadowBackend/api/v1/field",
+                url: "http://localhost:8080/cropBackend/api/v1/field",
                 type: "POST",
                 data: formData,
                 processData: false,
@@ -265,7 +265,7 @@ $("#updateFieldButton").on("click", async function() {
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: `http://localhost:5058/greenShadowBackend/api/v1/field/${fieldCode}`,
+                url: `http://localhost:8080/cropBackend/api/v1/field/${fieldCode}`,
                 type: "PUT",
                 data: formData,
                 processData: false,
@@ -334,7 +334,7 @@ $(document).ready(function() {
         const cardId = $(this).data('field-code');
 
         $.ajax({
-            url: `http://localhost:5058/greenShadowBackend/api/v1/field/${cardId}`,
+            url: `http://localhost:8080/cropBackend/api/v1/field/${cardId}`,
             type: 'DELETE',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')
@@ -385,7 +385,7 @@ export class LoadFieldCard {
     loadAllFieldCard() {
         return new Promise((resolve, reject) => {
             $.ajax({
-                url: "http://localhost:5058/greenShadowBackend/api/v1/field",
+                url: "http://localhost:8080/cropBackend/api/v1/field",
                 type: "GET",
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')
@@ -457,7 +457,7 @@ export class LoadSelectedFieldWithCrop{
         const fieldId = lastCode; // Replace with the actual fieldId you want to retrieve
         console.log("pop code : " , fieldId)
         $.ajax({
-            url: `http://localhost:5058/greenShadowBackend/api/v1/field/${fieldId}`,
+            url: `http://localhost:8080/cropBackend/api/v1/field/${fieldId}`,
             type: "GET",
             contentType: "application/json",
             headers: {
