@@ -1,7 +1,5 @@
-export let cropList=[];
-export let staffList=[];
-export let fieldList=[];
-export let logList=[];
-export let vehicleList=[];
-export let equipmentList=[];
-export let userList=[];
+export let vehicleDetails = [];
+export let equipmentDetails = [];
+export let staffDetails = [];
+export const pairsValues = [];
+export const staffEquipmentCount = [];

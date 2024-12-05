@@ -1,153 +1,461 @@
-// Define API base URLs
-const API_URL = "http://localhost:8081/cropBackend/api/v1/vehicles";
-const STAFF_API_URL = "http://localhost:8081/cropBackend/api/v1/staff";
+import Vehicle from "../model/Vehicle.js";
+import {LoadAllStaffMember} from './StaffController.js';
 
-// Fetch and display vehicles in the table
-function fetchVehicles() {
-    $.get(API_URL, function (vehicles) {
-        const vehicleTableBody = $('#vehicleTable tbody');
-        vehicleTableBody.empty();
-        vehicles.forEach((vehicle) => {
-            vehicleTableBody.append(`
-                <tr>
-                    <td>${vehicle.vehicleCode}</td>
-                    <td>${vehicle.licensePlateNumber}</td>
-                    <td>${vehicle.name}</td>
-                    <td>${vehicle.category}</td>
-                    <td>${vehicle.fuelType}</td>
-                    <td>${vehicle.status}</td>
-                    <td>${vehicle.remark}</td>
-                    <td>${vehicle.memberCode}</td>
-                    <td>
-                        <button class="edit-btn btn btn-warning btn-sm" data-id="${vehicle.vehicleCode}">Edit</button>
-                        <button class="delete-btn btn btn-danger btn-sm" data-id="${vehicle.vehicleCode}">Delete</button>
-                    </td>
-                </tr>
-            `);
-        });
-    });
-}
-
-// Populate staff dropdown and set up a change listener
-function populateStaffOptions() {
-    $.get(STAFF_API_URL, function (staffList) {
-        const staffDropdown = $('#staff');
-        staffDropdown.empty();
-        staffDropdown.append(`<option value="" disabled selected>Select staff</option>`);
-        staffList.forEach((staff) => {
-            staffDropdown.append(`<option value="${staff.code}">${staff.name}</option>`);
-        });
-
-        // Event listener for dropdown change
-        staffDropdown.change(function () {
-            const selectedStaffCode = $(this).val();
-            if (selectedStaffCode) {
-                fetchStaffDetails(selectedStaffCode);
-            }
-        });
-    });
-}
-
-// Fetch details of the selected staff and populate the fields
-function fetchStaffDetails(staffCode) {
-    $.get(`${STAFF_API_URL}/${staffCode}`, function (staff) {
-        // Assuming the staff object contains fields like `name`, `email`, and `department`
-        $('#staffDetails').html(`
-            <div><strong>Name:</strong> ${staff.name}</div>
-            <div><strong>Email:</strong> ${staff.email}</div>
-            <div><strong>Department:</strong> ${staff.department}</div>
-        `);
-    });
-}
-
-// Add or update vehicle
-$('#vehicleForm').submit(function (event) {
-    event.preventDefault();
-
-    const vehicleData = {
-        vehicleCode: $('#vehicleCode').val().trim(),
-        licensePlateNumber: $('#licensePlateNumber').val().trim(),
-        name: $('#vehicleName').val().trim(),
-        category: $('#category').val().trim(),
-        fuelType: $('#fuelType').val().trim(),
-        status: $('#status').val().trim(),
-        remark: $('#remark').val().trim(),
-        memberCode: $('#staff').val().trim(),
-    };
-
-    const isUpdate = $('#submitVehicle').text() === 'Update Vehicle';
-
-    if (isUpdate) {
-        $.ajax({
-            url: `${API_URL}/${vehicleData.vehicleCode}`,
-            method: 'PUT',
-            contentType: 'application/json',
-            data: JSON.stringify(vehicleData),
-            success: function () {
-                alert('Vehicle updated successfully!');
-                fetchVehicles();
-            },
-            error: function () {
-                alert('Failed to update vehicle.');
-            }
-        });
-    } else {
-        $.ajax({
-            url: API_URL,
-            method: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify(vehicleData),
-            success: function () {
-                alert('Vehicle added successfully!');
-                fetchVehicles();
-            },
-            error: function () {
-                alert('Failed to add vehicle.');
-            }
-        });
-    }
-
-    $('#vehicleForm')[0].reset();
-    $('#vehicleCode').prop('disabled', false);
-    $('#submitVehicle').text('Submit');
-});
-
-// Edit vehicle (prefill form)
-$(document).on('click', '.edit-btn', function () {
-    const vehicleCode = $(this).data('id');
-    $.get(`${API_URL}/${vehicleCode}`, function (vehicle) {
-        $('#vehicleCode').val(vehicle.vehicleCode).prop('disabled', true);
-        $('#licensePlateNumber').val(vehicle.licensePlateNumber);
-        $('#vehicleName').val(vehicle.name);
-        $('#category').val(vehicle.category);
-        $('#fuelType').val(vehicle.fuelType);
-        $('#status').val(vehicle.status);
-        $('#remark').val(vehicle.remark);
-        $('#staff').val(vehicle.memberCode);
-        $('#submitVehicle').text('Update Vehicle');
-    });
-});
-
-// Delete vehicle
-$(document).on('click', '.delete-btn', function () {
-    const vehicleCode = $(this).data('id');
-    if (confirm('Are you sure you want to delete this vehicle?')) {
-        $.ajax({
-            url: `${API_URL}/${vehicleCode}`,
-            method: 'DELETE',
-            success: function () {
-                alert('Vehicle deleted successfully!');
-                fetchVehicles();
-            },
-            error: function () {
-                alert('Failed to delete vehicle.');
-            }
-        });
-    }
-});
-
-// Initialize on page load
 $(document).ready(function () {
-    populateStaffOptions();
-    fetchVehicles();
+    let clickTableRow = 0;
+    let clickNewComboBoxBtn = 0;
+
+    const loadAllMember = new LoadAllStaffMember();
+    const loadAllVehicle = new LoadAllVehicleDetails();
+
+    //SAVE VEHICLE
+    $("#modalSubmitButton").on("click", (e)=> {
+        e.preventDefault();
+
+        // Collect form data
+        let licensePlateNumber = $("#licensePlateNumber").val();
+        let vehicleName = $("#vehicleName").val();
+        let category = $("#category").val();
+        let fuelType = $("#fuelType").val();
+        let status = $("#status").val();
+        let remark = $("#remark").val();
+
+        // Collect multiple staff values
+        let staffEquipment = null;
+        $("#additionalVehicleStaff select").each(function() {
+            let staffValue = $(this).val();
+            if (staffValue) {
+                staffEquipment = staffValue;
+            }
+        });
+
+        let vehicleDTO = {
+            licensePlateNumber: licensePlateNumber,
+            name: vehicleName,
+            category: category,
+            fuelType: fuelType,
+            status: status,
+            remark: remark,
+            memberCode: staffEquipment
+        };
+
+        Swal.fire({
+            title: "Do you want to save the changes?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Save",
+            denyButtonText: `Don't save`
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "http://localhost:5058/greenShadowBackend/api/v1/vehicles",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify(vehicleDTO),
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')
+                    },
+                    success: function () {
+                        clickNewComboBoxBtn = 0;
+                        loadAllVehicle.loadVehicleTable().then(vehicleCode => {
+                            Swal.fire("Saved!", "", "success");
+                        }).catch(error =>{
+                            console.error("Error loading field cards:", error);
+                        });
+                        $('#additionalVehicleStaff').empty();
+                        $('#vehicle-modal').modal("hide");
+                    },
+                    error: function (xhr, status, error) {
+                        if (xhr.status === 400) {
+                            alert("Failed to save vehicle: Bad request");
+                        } else {
+                            alert("Failed to save vehicle: Server error");
+                        }
+                    }
+                });
+            } else if (result.isDenied) {
+                Swal.fire("Changes are not saved", "", "info");
+            }
+        });
+    });
+
+    // SET DATA VEHICLE UPDATE MODAL
+    $('#vehicleDetailsTable').on('click', 'tr', function () {
+        clickNewComboBoxBtn = 1;
+        $('#additionalVehicleStaffUpdate').empty();
+        let vehicleCode = $(this).find(".code").text();
+        let licensePlateNumber = $(this).find(".licensePlateNumber").text();
+        let vehicleName = $(this).find(".vehicleName").text();
+        let category = $(this).find(".category").text().trim();
+        let fuelType = $(this).find(".fuelType").text().trim();
+        let status = $(this).find(".status").text().trim();
+        let remark = $(this).find(".remark").text();
+
+        clickTableRow = $(this).index();
+
+        $('#selectedVehicleCode').val(vehicleCode);
+        $('#updateLicensePlateNumber').val(licensePlateNumber);
+        $('#updateVehicleName').val(vehicleName);
+        $('#updateCategoryVehicle').val(category);
+        $('#fuelTypeUpdate').val(fuelType);
+        $('#statusUpdate').val(status);
+        $('#updateRemark').val(remark);
+
+        let staffMemberArray = $(this).find(".staffMember").text().split(", ");
+
+        const vehicle = new Vehicle(vehicleCode,licensePlateNumber,vehicleName,category,fuelType,status,staffMemberArray,remark);
+        loadAllMember.loadAllMembers().then(memberCode => {
+            populateDropdownVehicle("#updateStaffVehicle",staffMemberArray,memberCode);
+        }).catch(error => {
+            console.error("Error loading vehicle :", error);
+        })
+    });
+
+    // SHOW DELETE CONFIRMATION MODAL
+    $('#vehicleDetailsTable').on('click', '.delete-button', function () {
+        const index = $(this).data('index');
+        $('#confirmVehicleDeleteYes').data('index', index);
+        $('#confirmVehicleDeleteModal').modal('show');
+    });
+
+    // DELETE VEHICLE
+    $('#confirmVehicleDeleteYes').on('click', function () {
+        const index = $(this).data('index'); // Get the stored index
+
+        $.ajax({
+            url: `http://localhost:5058/greenShadowBackend/api/v1/vehicles/${index}`,
+            type: 'DELETE',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')
+            },
+            success: function () {
+                loadAllVehicle.loadVehicleTable();
+                Swal.fire('Deleted!', 'The vehicle has been deleted.', 'success');
+            },
+            error: function (xhr, status, error) {
+                console.error("Error deleting vehicle:", error);
+                if (xhr.status === 404) {
+                    Swal.fire('Error', 'Vehicle not found!', 'error');
+                } else if (xhr.status === 400) {
+                    Swal.fire('Error', 'Invalid vehicle ID!', 'error');
+                } else {
+                    Swal.fire('Error', 'Failed to delete vehicle. Please try again.', 'error');
+                }
+            }
+        });
+        $('#confirmVehicleDeleteModal').modal('hide');
+        clearOverlayOfModal();
+    });
+
+    //Delete modal No button
+    $('#confirmVehicleDeleteNo,#close-btn-delete').on('click',()=>{
+        $('#confirmVehicleDeleteModal').modal('hide'); // Hide the modal
+        clearOverlayOfModal();
+    });
+
+    // Clear fields when the modal is closed
+    $('#vehicle-modal,#updateVehicle-modal').on('hidden.bs.modal', function () {
+        $('#vehicleForm')[0].reset();
+        $('#updateVehicleForm')[0].reset();
+        $('#additionalVehicleStaffUpdate').empty();
+    });
+
+    // UPDATE VEHICLE DETAILS
+    // $('#modalSubmitButtonUpdate').on('click', ()=> {
+    //
+    //     // Collect form data
+    //     let vehicleCode = $("#selectedVehicleCode").val();
+    //     let licensePlateNumber = $("#updateLicensePlateNumber").val();
+    //     let vehicleName = $("#updateVehicleName").val();
+    //     let category = $("#updateCategoryVehicle").val();
+    //     let fuelType = $("#fuelTypeUpdate").val();
+    //     let status = $("#statusUpdate").val();
+    //     let remark = $("#updateRemark").val();
+    //
+    //     // Collect updated staff values
+    //     let updatedStaffVehicle = [];
+    //     $("#updateStaffVehicle select").each(function() {
+    //         let staffValue = $(this).val();
+    //         if (staffValue) {
+    //             updatedStaffVehicle = staffValue;
+    //         }
+    //     });
+    //     $('#additionalVehicleStaffUpdate select').each(function () {
+    //         const selectedValue = $(this).val();
+    //         if (selectedValue) {
+    //             updatedStaffVehicle = selectedValue;
+    //         }
+    //     });
+    //
+    //     const vehicleDTO = {
+    //         vehicleCode:vehicleCode,
+    //         licensePlateNumber: licensePlateNumber,
+    //         name: vehicleName,
+    //         category: category,
+    //         fuelType: fuelType,
+    //         status: status,
+    //         memberCode: updatedStaffVehicle,
+    //         remark: remark
+    //     };
+    //
+    //     Swal.fire({
+    //         title: "Do you want to update the changes?",
+    //         showDenyButton: true,
+    //         showCancelButton: true,
+    //         confirmButtonText: "Update",
+    //         denyButtonText: `Don't update`
+    //     }).then((result) => {
+    //         if (result.isConfirmed) {
+    //             $.ajax({
+    //                 url: `http://localhost:5058/greenShadowBackend/api/v1/vehicles/${vehicleCode}`,
+    //                 type: 'PUT',
+    //                 contentType: 'application/json',
+    //                 data: JSON.stringify(vehicleDTO),
+    //                 success: function(response) {
+    //                     clickNewComboBoxBtn = 0;
+    //                     loadAllVehicle.loadVehicleTable().then(vehicleCode =>{
+    //                         Swal.fire("Saved!", "", "success");
+    //                         resetForm('#additionalVehicleStaffUpdate');
+    //                     }).catch(error =>{
+    //                         console.error("vehicle code not found:", error);
+    //                     });
+    //                     $('#updateVehicle-modal').modal("hide");
+    //                 },
+    //                 error: function(xhr, status, error) {
+    //                     console.error("Error updating vehicle:", error);
+    //                     alert("Failed to update vehicle. Please try again.");
+    //                 }
+    //             });
+    //         } else if (result.isDenied) {
+    //             Swal.fire("Changes are not updated", "", "info");
+    //         }
+    //     });
+    // });
+    $('#modalSubmitButtonUpdate').on('click', () => {
+
+        // Collect form data
+        let vehicleCode = $("#selectedVehicleCode").val();
+        let licensePlateNumber = $("#updateLicensePlateNumber").val();
+        let vehicleName = $("#updateVehicleName").val();
+        let category = $("#updateCategoryVehicle").val();
+        let fuelType = $("#fuelTypeUpdate").val();
+        let status = $("#statusUpdate").val();
+        let remark = $("#updateRemark").val();
+
+        // Collect updated staff values
+        let updatedStaffVehicle = [];
+        $("#updateStaffVehicle select").each(function() {
+            let staffValue = $(this).val();
+            if (staffValue) {
+                updatedStaffVehicle.push(staffValue);
+            }
+        });
+        $('#additionalVehicleStaffUpdate select').each(function () {
+            const selectedValue = $(this).val();
+            if (selectedValue) {
+                updatedStaffVehicle.push(selectedValue);
+            }
+        });
+
+        // Validation
+        if (!vehicleCode || !licensePlateNumber || !vehicleName || !category || !fuelType || !status || updatedStaffVehicle.length === 0) {
+            Swal.fire("Error", "All fields must be filled!", "error");
+            return;
+        }
+
+        const vehicleDTO = {
+            vehicleCode: vehicleCode,
+            licensePlateNumber: licensePlateNumber,
+            name: vehicleName,
+            category: category,
+            fuelType: fuelType,
+            status: status,
+            memberCode: updatedStaffVehicle,
+            remark: remark
+        };
+
+        Swal.fire({
+            title: "Do you want to update the changes?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Update",
+            denyButtonText: `Don't update`
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: `http://localhost:5058/greenShadowBackend/api/v1/vehicles/${vehicleCode}`,
+                    type: 'PUT',
+                    contentType: 'application/json',
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')
+                    },
+                    data: JSON.stringify(vehicleDTO),
+                    success: function(response) {
+                        clickNewComboBoxBtn = 0;
+                        loadAllVehicle.loadVehicleTable().then(vehicleCode => {
+                            Swal.fire("Saved!", "", "success");
+                            resetForm('#additionalVehicleStaffUpdate');
+                        }).catch(error => {
+                            console.error("vehicle code not found:", error);
+                        });
+                        $('#updateVehicle-modal').modal("hide");
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error updating vehicle:", error);
+                        console.error("Status:", status);
+                        console.error("Response:", xhr.responseText); // Log server response
+                        Swal.fire("Failed to update vehicle. Check the console for details.", "", "error");
+                    }
+                });
+            } else if (result.isDenied) {
+                Swal.fire("Changes are not updated", "", "info");
+            }
+        });
+    });
+
+
+    function resetForm(additionalField) {
+        $('#updateVehicleForm')[0].reset();
+        $(`${additionalField}`).empty();
+    }
+
+    //Add additional Staff Modal
+    $('#addVehicleStaffButton').on('click', function() {
+        clickNewComboBoxBtn++;
+        if (clickNewComboBoxBtn == 1) {
+            loadAllMember.loadAllMembers().then(memberCode => {
+                addDropdownVehicle("#additionalVehicleStaff", "#staff-vehicle", memberCode)
+            }).catch(error => {
+                console.error("Error loading staff member details:", error);
+            });
+        }
+    });
+
+    //Add additional Staff field Update Modal
+    $('#addVehicleStaffButtonUpdate').on('click', function() {
+        clickNewComboBoxBtn++;
+        if (clickNewComboBoxBtn == 1){
+            loadAllMember.loadAllMembers().then(memberCode => {
+                addDropdownVehicle("#additionalVehicleStaffUpdate", "#staff-vehicleUpdate", memberCode)
+            }).catch(error => {
+                console.error("Error loading staff member details:", error);
+            });
+        }
+    });
+
+    function addDropdownVehicle(containerId, selectClass, options) {
+        const $container = $('<div class="d-flex align-items-center mt-2"></div>');
+        const $select = $('<select id="optionSelect" class="form-control me-2"></select>').addClass(selectClass);
+
+        // Populate select options
+        options.forEach(option => $select.append(`<option value="${option}">${option}</option>`));
+
+        // Remove button
+        const $removeBtn = $('<button class="btn btn-danger">Remove</button>');
+        $removeBtn.on('click', function() {
+            clickNewComboBoxBtn = 0;
+            $container.remove();
+        });
+
+        $container.append($select).append($removeBtn);
+        $(containerId).append($container);
+    }
+
+    function populateDropdownVehicle(container, selectedValues, options) {
+        $(container).empty();
+        selectedValues.forEach(value => {
+            // Create a wrapper div for each dropdown and the remove button
+            const dropdownWrapper = $('<div class="dropdown-wrapper mb-3" style="display: flex; align-items: center;"></div>');
+
+            // Create the dropdown
+            const dropdown = $('<select class="form-control me-2"></select>');
+            options.forEach(option => {
+                dropdown.append(`<option value="${option}" ${option.trim() === value ? 'selected' : ''}>${option}</option>`);
+            });
+
+            // Create the remove button
+            const removeButton = $('<button id="btn-remove" type="button" class="btn btn-danger ml-2">Remove</button>');
+
+            // Add click event to remove the dropdown when the button is clicked
+            removeButton.click(function() {
+                clickNewComboBoxBtn = 0;
+                dropdownWrapper.remove();
+            });
+            dropdownWrapper.append(dropdown);
+            dropdownWrapper.append(removeButton);
+            $(container).append(dropdownWrapper);
+        });
+    }
+
+    $('#vehicle-modal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        if (button.data('action') === 'add') {
+            $('#equipmentForm')[0].reset();
+            resetForm("#additionalVehicleStaff");
+        }
+    });
+
+    $('#closeModal, .btn-close , #close-btnUpdate').on('click',function (){
+        clickNewComboBoxBtn = 0;
+    });
+
+    function clearOverlayOfModal(){
+        // Ensure the modal and backdrop are fully removed when hidden (overlay)
+        $('#confirmVehicleDeleteModal').on('hidden.bs.modal', function () {
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
+        });
+    }
 });
+
+export class LoadAllVehicleDetails{
+    loadVehicleTable() {
+        $('#vehicleDetailsTable').empty();
+        const tableBody = $("#vehicleDetailsTable");
+        const vehicleCodes = [];
+
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: "http://localhost:5058/greenShadowBackend/api/v1/vehicles",
+                type: "GET",
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')
+                },
+                success: function (vehicles) {
+                    vehicles.forEach(vehicle => {
+                        const vehicleDetail = new Vehicle(
+                            vehicle.vehicleCode,
+                            vehicle.licensePlateNumber,
+                            vehicle.name,
+                            vehicle.category,
+                            vehicle.fuelType,
+                            vehicle.status,
+                            vehicle.memberCode || "N/A",
+                            vehicle.remark
+                        );
+                        vehicleCodes.push(vehicle.vehicleCode);
+                        const row = `
+                            <tr>
+                                <td class="code">${vehicle.vehicleCode}</td>
+                                <td class="licensePlateNumber">${vehicleDetail.licensePlateNumber}</td>
+                                <td class="vehicleName">${vehicleDetail.vehicleName}</td>
+                                <td class="category">${vehicleDetail.category}</td>
+                                <td class="fuelType">${vehicleDetail.fuelType}</td>
+                                <td class="status">${vehicleDetail.status}</td>
+                                <td class="staffMember">${vehicleDetail.staffMember}</td>
+                                <td class="remark">${vehicleDetail.remark}</td>
+                                <td><button class="btn btn-danger delete-button" data-index="${vehicle.vehicleCode}">Delete</button></td>
+                            </tr>
+                        `;
+                        tableBody.append(row);
+                    });
+                    resolve(vehicleCodes);
+                },
+                error: function (xhr, status, error) {
+                    alert("Failed to retrieve vehicle data");
+                    reject(error);
+                }
+            });
+        });
+    }
+}

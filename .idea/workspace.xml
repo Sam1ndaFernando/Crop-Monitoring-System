@@ -5,7 +5,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d14f6a8-646a-42c7-a0b2-7f1cf4609b6e" name="Changes" comment="updated">
-      <change beforePath="$PROJECT_DIR$/model/EquipmentModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/EquipmentModel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/picture/download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/picture/images.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/picture/img.icons8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/picture/istockphoto-802742830-612x612.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controller/IndexController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controller/MonitoringLogController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controller/signIn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/crop.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/dashboard.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/field.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/monitoring.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/normalize.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/sideBar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/signIn.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/vehicle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/Equipment.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/Staff.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/Vehicle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/login.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/CropController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/CropController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/DashboardController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/EquipmentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/EquipmentController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/FieldController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/FieldController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/LogController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/StaffController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/StaffController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/UserController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/VehicleController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/VehicleController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/db/db.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/CropModel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/EquipmentModel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/FieldModel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/LogModel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/StaffModel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/UserModel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/VehicleModel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stylesheets/styles.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,14 +145,8 @@
       <workItem from="1733326248361" duration="6533000" />
       <workItem from="1733375878048" duration="4659000" />
       <workItem from="1733383475291" duration="1365000" />
-      <workItem from="1733384908225" duration="943000" />
-    </task>
-    <task id="LOCAL-00008" summary="updated">
-      <created>1730617058378</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1730617058378</updated>
+      <workItem from="1733384908225" duration="1078000" />
+      <workItem from="1733407742148" duration="1073000" />
     </task>
     <task id="LOCAL-00009" summary="img add">
       <created>1730617073101</created>
@@ -452,7 +484,14 @@
       <option name="project" value="LOCAL" />
       <updated>1733385724185</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="updated">
+      <created>1733385983039</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1733385983039</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
