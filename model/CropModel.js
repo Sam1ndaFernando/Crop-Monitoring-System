@@ -1,84 +1,74 @@
-export class CropModel {
-    constructor(cropCode, cropName, scientificName, category, season, cropImage, logList = [], fieldList = []) {
-        this.CropCode = cropCode;
-        this.CropName = cropName;
-        this.ScientificName = scientificName;
-        this.Category = category;
-        this.Season = season;
-        this.CropImage = cropImage;
-        this.LogList = logList;
-        this.FieldList = fieldList;
+export class EquipmentModel {
+    constructor(equipmentCode, name, type, status, availableCount, staffCodeList = [], fieldList = []) {
+        this.Code = equipmentCode;
+        this.equiName = name;
+        this.equipmentType = type;
+        this.equipmentStatus = status;
+        this.availableCount = availableCount;
+        this.staffCodeList = staffCodeList;
+        this.fieldList = fieldList;
     }
 
-    // Getter and Setter for CropCode
-    getCropCode() {
-        return this.CropCode;
+    // Getter and Setter for equipmentCode
+    getEquipmentCode() {
+        return this.Code;
     }
 
-    setCropCode(cropCode) {
-        this.CropCode = cropCode;
+    setEquipmentCode(equipmentCode) {
+        this.Code = equipmentCode;
     }
 
-    // Getter and Setter for CropName
-    getCropName() {
-        return this.CropName;
+    // Getter and Setter for equipmentName
+    getEquipmentName() {
+        return this.equiName;
     }
 
-    setCropName(cropName) {
-        this.CropName = cropName;
+    setEquipmentName(name) {
+        this.equiName = name;
     }
 
-    // Getter and Setter for ScientificName
-    getScientificName() {
-        return this.ScientificName;
+    // Getter and Setter for equipmentType
+    getEquipmentType() {
+        return this.equipmentType;
     }
 
-    setScientificName(scientificName) {
-        this.ScientificName = scientificName;
+    setEquipmentType(type) {
+        this.equipmentType = type;
     }
 
-    // Getter and Setter for Category
-    getCategory() {
-        return this.Category;
+    // Getter and Setter for equipmentStatus
+    getEquipmentStatus() {
+        return this.equipmentStatus;
     }
 
-    setCategory(category) {
-        this.Category = category;
+    setEquipmentStatus(status) {
+        this.equipmentStatus = status;
     }
 
-    // Getter and Setter for Season
-    getSeason() {
-        return this.Season;
+    // Getter and Setter for availableCount
+    getAvailableCount() {
+        return this.availableCount;
     }
 
-    setSeason(season) {
-        this.Season = season;
+    setAvailableCount(availableCount) {
+        this.availableCount = availableCount;
     }
 
-    // Getter and Setter for CropImage
-    getCropImage() {
-        return this.CropImage;
+    // Getter and Setter for staffCodeList
+    getStaffCodeList() {
+        return this.staffCodeList;
     }
 
-    setCropImage(cropImage) {
-        this.CropImage = cropImage;
+    setStaffCodeList(staffCodeList) {
+        this.staffCodeList = staffCodeList;
     }
 
-    // Getter and Setter for LogList
-    getLogList() {
-        return this.LogList;
-    }
-
-    setLogList(logList) {
-        this.LogList = logList;
-    }
-
-    // Getter and Setter for FieldList
+    // Getter and Setter for fieldList
     getFieldList() {
-        return this.FieldList;
+        return this.fieldList;
     }
 
     setFieldList(fieldList) {
-        this.FieldList = fieldList;
+        this.fieldList = fieldList;
     }
 }
