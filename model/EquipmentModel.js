@@ -1,15 +1,15 @@
 export class EquipmentModel {
-
     constructor(equipmentCode, name, type, status, availableCount, staffCodeList = [], fieldList = []) {
-        this._equipmentCode = equipmentCode;
-        this._name = name;
-        this._type = type;
-        this._status = status;
-        this._availableCount = availableCount;
-        this._staffCodeList = staffCodeList;
-        this._fieldList = fieldList;
+        this.equipmentCode = equipmentCode;
+        this.name = name;
+        this.type = type;
+        this.status = status;
+        this.availableCount = availableCount;
+        this.staffCodeList = staffCodeList;
+        this.fieldList = fieldList;
     }
 
+    // Getter and Setter for equipmentCode
     get equipmentCode() {
         return this._equipmentCode;
     }
@@ -18,6 +18,7 @@ export class EquipmentModel {
         this._equipmentCode = value;
     }
 
+    // Getter and Setter for name
     get name() {
         return this._name;
     }
@@ -26,6 +27,7 @@ export class EquipmentModel {
         this._name = value;
     }
 
+    // Getter and Setter for type
     get type() {
         return this._type;
     }
@@ -34,6 +36,7 @@ export class EquipmentModel {
         this._type = value;
     }
 
+    // Getter and Setter for status
     get status() {
         return this._status;
     }
@@ -42,6 +45,7 @@ export class EquipmentModel {
         this._status = value;
     }
 
+    // Getter and Setter for availableCount
     get availableCount() {
         return this._availableCount;
     }
@@ -50,6 +54,7 @@ export class EquipmentModel {
         this._availableCount = value;
     }
 
+    // Getter and Setter for staffCodeList
     get staffCodeList() {
         return this._staffCodeList;
     }
@@ -58,6 +63,7 @@ export class EquipmentModel {
         this._staffCodeList = value;
     }
 
+    // Getter and Setter for fieldList
     get fieldList() {
         return this._fieldList;
     }

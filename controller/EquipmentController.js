@@ -41,6 +41,17 @@ $(document).ready(function () {
             formData.append("equipmentImage", equipmentImage);
         }
 
+        // Create an EquipmentModel instance for the equipment
+        const equipmentModel = new EquipmentModel(
+            equipmentCode,
+            equipmentName,
+            equipmentType,
+            equipmentStatus,
+            availableCount,
+            [], // Add staffCodeList if applicable
+            [] // Add fieldList if applicable
+        );
+
         // Add or update equipment based on the current mode
         const method = editEquipmentCode ? "PUT" : "POST";
         const url = editEquipmentCode ? `${API_URL}/${editEquipmentCode}` : API_URL;
