@@ -4,7 +4,13 @@ Green Shadow Crop Monitoring System is a robust backend application built using 
 
 ---
 
-## Features
+## Backend Repository
+
+[Crop-backend GitHub Repository](https://github.com/Sam1ndaFernando/Crop-backend.git)
+
+---
+
+## Key Features
 
 ### 1. **Crop Management**
 - Add, update, and delete crop details.
@@ -33,72 +39,33 @@ Green Shadow Crop Monitoring System is a robust backend application built using 
 
 ## Technology Stack
 
-- **Programming Language:** Java 21
-- **Framework:** Spring Boot
-- **Build Tool:** Gradle
-- **Database:** MySQL
-- **ORM:** Hibernate
-- **Security:** JWT Authentication
-- **Version Control:** [Crop-backend GitHub Repository](https://github.com/Sam1ndaFernando/Crop-backend.git)
+- **Programming Language:** Java 21  
+- **Framework:** Spring Boot  
+- **Build Tool:** Gradle  
+- **Database:** MySQL  
+- **ORM:** Hibernate  
+- **Security:** JWT Authentication  
 
 ---
 
 ## Prerequisites
 
-- **Java 21** installed.
-- **Gradle** installed.
-- MySQL Database setup with appropriate credentials.
-- Optional: IDE such as IntelliJ IDEA or Eclipse for development.
+- **Java 21** installed.  
+- **Gradle** installed.  
+- MySQL Database setup with appropriate credentials.  
+- Optional: IDE such as IntelliJ IDEA or Eclipse for development.  
 
 ---
 
-## API Endpoints
+## Main Services
 
-### **Authentication**
-- `POST /api/auth/register` - Register a new user.
-- `POST /api/auth/login` - Login and receive a JWT token.
-
-### **Crop Management**
-- `GET /api/crops` - List all crops.
-- `POST /api/crops` - Add a new crop.
-
-### **Field Management**
-- `GET /api/fields` - List all fields.
-- `POST /api/fields` - Add a new field.
-
-### **Equipment Management**
-- `GET /api/equipment` - List all equipment.
-- `POST /api/equipment` - Add new equipment.
-
-### **Log Management**
-- `GET /api/logs` - Fetch activity logs.
-- `POST /api/logs` - Add a new log entry.
-
-### **Staff Management**
-- `GET /api/staff` - List all staff.
-- `POST /api/staff` - Add new staff.
-
-### **Vehicle Management**
-- `GET /api/vehicles` - List all vehicles.
-- `POST /api/vehicles` - Add a new vehicle.
-
----
-
-## Security
-
-- Uses **JWT (JSON Web Token)** for secure authentication and authorization.
-- Role-based access control (RBAC) ensures data integrity and privacy.
-
----
-
-## Contributing
-
-Contributions are welcome! Follow these steps:
-1. Fork the repository.
-2. Create a feature branch (`git checkout -b feature-branch`).
-3. Commit your changes (`git commit -m "Feature description"`).
-4. Push to the branch (`git push origin feature-branch`).
-5. Create a pull request.
+- **Field Service**: Allocates and manages cultivation fields.  
+- **Crop Service**: Tracks crop information, including types and growth stages.  
+- **Staff Service**: Manages human resources and assignments.  
+- **Monitoring Service**: Records and tracks crop-related observations and activities.  
+- **Vehicle Service**: Handles vehicle management for field operations.  
+- **Equipment Service**: Monitors agricultural equipment usage and availability.  
+- **Auth Service**: Manages secure user authentication and role-based permissions.  
 
 ---
 
@@ -110,7 +77,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For any questions or suggestions, feel free to reach out to the repository maintainer [Saminda Fernando](https://github.com/Sam1ndaFernando).
+For any questions or suggestions, feel free to reach out to the repository maintainer:  
+[Saminda Fernando](https://github.com/Sam1ndaFernando)
 
 ---
-
