@@ -1,7 +1,5 @@
-import { logList } from "../db/db.js";
-
 $(document).ready(function () {
-    // Simulated database as an array
+    const API_BASE_URL = "http://localhost:8080/api/v1/logs"; // Update with your actual API base URL
 
     // Load logs on page load
     loadLogs();
@@ -19,68 +17,78 @@ $(document).ready(function () {
         const cropOfLog = $("#cropOfLog").val().trim();
         const fieldOfLog = $("#fieldOfLog").val().trim();
 
-        // Validate form inputs
-        if (!logCode || !date || !logDetails || !staffOfLog || !cropOfLog || !fieldOfLog) {
-            alert("All fields are required.");
-            return;
+        // Prepare form data
+        const formData = new FormData();
+        formData.append("logCode", logCode);
+        formData.append("date", date);
+        formData.append("logDetails", logDetails);
+        if (observedImage) {
+            formData.append("observedImage", observedImage);
         }
+        formData.append("staffList", staffOfLog);
+        formData.append("cropList", cropOfLog);
+        formData.append("fieldList", fieldOfLog);
 
-        // Create the log entry object
-        const logData = {
-            logCode,
-            date,
-            logDetails,
-            observedImage: observedImage ? URL.createObjectURL(observedImage) : null, // Handle image URL
-            staffOfLog,
-            cropOfLog,
-            fieldOfLog
-        };
+        // Determine if this is an "add" or "update" operation
+        const isUpdate = logCode && logList.some(log => log.logCode === logCode);
+        const url = isUpdate ? `${API_BASE_URL}/${logCode}` : API_BASE_URL;
+        const method = isUpdate ? "PUT" : "POST";
 
-        // Check if the log entry already exists (update instead of adding)
-        const existingLogIndex = logList.findIndex(log => log.logCode === logCode);
-        if (existingLogIndex !== -1) {
-            // Update the existing log entry
-            logList[existingLogIndex] = logData;
-            alert("Log entry updated successfully.");
-        } else {
-            // Add the log entry to the "database" array
-            logList.push(logData);
-            alert("Log entry added successfully.");
-        }
-
-        // Reset the form and change button text back to "Add Log"
-        $("#log-form")[0].reset();
-        $("#observedImagePreview").remove();  // Remove any existing image preview
-        $("#submitLog").text("Add Log");
-
-        // Reload the table with the updated log entries
-        loadLogs();
+        // Make the AJAX request
+        $.ajax({
+            url: url,
+            method: method,
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function () {
+                alert(isUpdate ? "Log entry updated successfully." : "Log entry added successfully.");
+                $("#log-form")[0].reset();
+                $("#observedImagePreview").remove();
+                $("#submitLog").text("Add Log");
+                loadLogs(); // Reload the logs
+            },
+            error: function (xhr) {
+                console.error("Error:", xhr);
+                alert("An error occurred while processing your request.");
+            }
+        });
     });
 
-    // Function to load and display logs in the table
+    // Load logs from the backend and display them
     function loadLogs() {
-        const tbody = $("#logTable tbody");
-        tbody.empty(); // Clear existing rows
+        $.ajax({
+            url: API_BASE_URL,
+            method: "GET",
+            success: function (data) {
+                const tbody = $("#logTable tbody");
+                tbody.empty(); // Clear existing rows
 
-        logList.forEach((log) => {
-            const logRow = `
-                <tr data-log-code="${log.logCode}">
-                    <td>${log.logCode}</td>
-                    <td>${log.date}</td>
-                    <td>${log.logDetails}</td>
-                    <td>${log.staffOfLog}</td>
-                    <td>${log.cropOfLog}</td>
-                    <td>${log.fieldOfLog}</td>
-                    <td>
-                        ${log.observedImage ? `<img src="${log.observedImage}" class="img-thumbnail" width="100" />` : 'No Image'}
-                    </td>
-                    <td>
-                        <button class="btn btn-danger btn-sm delete-log">Delete</button>
-                        <button class="btn btn-warning btn-sm update-log">Update</button>
-                    </td>
-                </tr>
-            `;
-            tbody.append(logRow);
+                data.forEach((log) => {
+                    const logRow = `
+                        <tr data-log-code="${log.logCode}">
+                            <td>${log.logCode}</td>
+                            <td>${log.date}</td>
+                            <td>${log.logDetails}</td>
+                            <td>${log.staffList.join(", ")}</td>
+                            <td>${log.cropList.join(", ")}</td>
+                            <td>${log.fieldList.join(", ")}</td>
+                            <td>
+                                ${log.observedImage ? `<img src="${log.observedImage}" class="img-thumbnail" width="100" />` : 'No Image'}
+                            </td>
+                            <td>
+                                <button class="btn btn-danger btn-sm delete-log">Delete</button>
+                                <button class="btn btn-warning btn-sm update-log">Update</button>
+                            </td>
+                        </tr>
+                    `;
+                    tbody.append(logRow);
+                });
+            },
+            error: function (xhr) {
+                console.error("Error fetching logs:", xhr);
+                alert("Failed to load logs.");
+            }
         });
     }
 
@@ -90,12 +98,18 @@ $(document).ready(function () {
         const logCode = row.data("log-code");
 
         if (confirm("Are you sure you want to delete this log entry?")) {
-            const logIndex = logList.findIndex(log => log.logCode === logCode);
-            if (logIndex !== -1) {
-                logList.splice(logIndex, 1); // Remove log from "database"
-                alert("Log entry deleted successfully.");
-                row.remove(); // Remove row from the table
-            }
+            $.ajax({
+                url: `${API_BASE_URL}/${logCode}`,
+                method: "DELETE",
+                success: function () {
+                    alert("Log entry deleted successfully.");
+                    row.remove(); // Remove row from the table
+                },
+                error: function (xhr) {
+                    console.error("Error deleting log:", xhr);
+                    alert("Failed to delete log.");
+                }
+            });
         }
     });
 
@@ -103,26 +117,33 @@ $(document).ready(function () {
     $(document).on("click", ".update-log", function () {
         const row = $(this).closest("tr");
         const logCode = row.data("log-code");
-        const log = logList.find(log => log.logCode === logCode);
 
-        if (log) {
-            // Pre-fill the form with the log data for editing
-            $("#logCode").val(log.logCode);
-            $("#date").val(log.date);
-            $("#logDetails").val(log.logDetails);
-            $("#staffOfLog").val(log.staffOfLog);
-            $("#cropOfLog").val(log.cropOfLog);
-            $("#fieldOfLog").val(log.fieldOfLog);
+        $.ajax({
+            url: `${API_BASE_URL}/${logCode}`,
+            method: "GET",
+            success: function (log) {
+                // Pre-fill the form with the log data for editing
+                $("#logCode").val(log.logCode);
+                $("#date").val(log.date);
+                $("#logDetails").val(log.logDetails);
+                $("#staffOfLog").val(log.staffList.join(", "));
+                $("#cropOfLog").val(log.cropList.join(", "));
+                $("#fieldOfLog").val(log.fieldList.join(", "));
 
-            // Optionally, handle image preview (not required but can be useful)
-            if (log.observedImage) {
-                // Remove previous image preview (if any)
-                $("#observedImagePreview").remove();
-                $("#observedImage").after(`<img id="observedImagePreview" src="${log.observedImage}" class="img-thumbnail mt-2" width="100" />`);
+                // Optionally, handle image preview (not required but can be useful)
+                if (log.observedImage) {
+                    // Remove previous image preview (if any)
+                    $("#observedImagePreview").remove();
+                    $("#observedImage").after(`<img id="observedImagePreview" src="${log.observedImage}" class="img-thumbnail mt-2" width="100" />`);
+                }
+
+                // Change the button text to indicate the form is in "Update" mode
+                $("#submitLog").text("Update Log");
+            },
+            error: function (xhr) {
+                console.error("Error fetching log:", xhr);
+                alert("Failed to fetch log details.");
             }
-
-            // Change the button text to indicate the form is in "Update" mode
-            $("#submitLog").text("Update Log");
-        }
+        });
     });
 });
