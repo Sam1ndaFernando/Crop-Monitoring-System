@@ -48,7 +48,7 @@ $(document).ready(function () {
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: "http://localhost:5058/greenShadowBackend/api/v1/vehicles",
+                    url: "http://localhost:8080/cropBackend/api/v1/vehicles",
                     type: "POST",
                     contentType: "application/json",
                     data: JSON.stringify(vehicleDTO),
@@ -123,7 +123,7 @@ $(document).ready(function () {
         const index = $(this).data('index'); // Get the stored index
 
         $.ajax({
-            url: `http://localhost:5058/greenShadowBackend/api/v1/vehicles/${index}`,
+            url: `http://localhost:8080/cropBackend/api/v1/vehicles/${index}`,
             type: 'DELETE',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')
@@ -207,7 +207,7 @@ $(document).ready(function () {
     //     }).then((result) => {
     //         if (result.isConfirmed) {
     //             $.ajax({
-    //                 url: `http://localhost:5058/greenShadowBackend/api/v1/vehicles/${vehicleCode}`,
+    //                 url: `http://localhost:8080/cropBackend/api/v1/vehicles/${vehicleCode}`,
     //                 type: 'PUT',
     //                 contentType: 'application/json',
     //                 data: JSON.stringify(vehicleDTO),
@@ -283,7 +283,7 @@ $(document).ready(function () {
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: `http://localhost:5058/greenShadowBackend/api/v1/vehicles/${vehicleCode}`,
+                    url: `http://localhost:8080/cropBackend/api/v1/vehicles/${vehicleCode}`,
                     type: 'PUT',
                     contentType: 'application/json',
                     headers: {
@@ -416,7 +416,7 @@ export class LoadAllVehicleDetails{
 
         return new Promise((resolve, reject) => {
             $.ajax({
-                url: "http://localhost:5058/greenShadowBackend/api/v1/vehicles",
+                url: "http://localhost:8080/cropBackend/api/v1/vehicles",
                 type: "GET",
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')
