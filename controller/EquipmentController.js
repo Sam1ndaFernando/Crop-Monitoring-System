@@ -69,7 +69,7 @@ $('#addEquipmentButton').on('click',(e)=>{
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: "http://localhost:5058/greenShadowBackend/api/v1/equipment",
+                url: "http://localhost:8080/cropBackend/api/v1/equipment",
                 type: "POST",
                 contentType: "application/json",
                 data: JSON.stringify(equipmentDTO),
@@ -192,7 +192,7 @@ $('#EquipmentButtonUpdate').on('click', () => {
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: `http://localhost:5058/greenShadowBackend/api/v1/equipment/${equCode}`,
+                url: `http://localhost:8080/cropBackend/api/v1/equipment/${equCode}`,
                 type: 'PUT',
                 contentType: 'application/json',
                 data: JSON.stringify(equipmentDTO),
@@ -251,7 +251,7 @@ $('#equipmentDetailsTable').on('click', '.delete-button', function () {
 $('#confirmEquDeleteYes').on('click', function () {
     const index = $(this).data('index');
     $.ajax({
-        url: `http://localhost:5058/greenShadowBackend/api/v1/equipment/${index}`,
+        url: `http://localhost:8080/cropBackend/api/v1/equipment/${index}`,
         type: 'DELETE',
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')
@@ -360,7 +360,7 @@ export class LoadAllEquipment{
 
         return new Promise((resolve, reject) => {
             $.ajax({
-                url: "http://localhost:5058/greenShadowBackend/api/v1/equipment",
+                url: "http://localhost:8080/cropBackend/api/v1/equipment",
                 type: "GET",
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')
