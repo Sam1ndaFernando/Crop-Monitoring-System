@@ -1,9 +1,10 @@
 $(document).ready(function() {
-    const userList = []; // Array to store users
+    const API_BASE_URL = "http://localhost:8080/api/v1/users"; // Replace with your API URL
 
-    // Show the user section when a button is clicked (or on other trigger)
+    // Show the user section when a button is clicked
     $("#showUserSectionBtn").on("click", function() {
         $("#userSection").show(); // Show the user section
+        loadUsers(); // Load the users when the section is shown
     });
 
     // Handle the user form submission
@@ -23,40 +24,56 @@ $(document).ready(function() {
 
         // Create the user entry object
         const userData = {
-            userEmail,
-            userPassword,
-            userRole
+            email: userEmail,
+            password: userPassword,
+            role: userRole
         };
 
-        // Add the new user to the list
-        userList.push(userData);
-        alert("User added successfully.");
-
-        // Reset the form
-        $("#user-form")[0].reset();
-
-        // Reload the user table
-        loadUsers();
+        // Send the request to the backend (POST for creating)
+        $.ajax({
+            url: API_BASE_URL,
+            method: "POST",
+            data: userData,
+            success: function(response) {
+                alert("User added successfully.");
+                $("#user-form")[0].reset(); // Reset the form
+                loadUsers(); // Reload the user table
+            },
+            error: function(xhr) {
+                console.error("Error adding user:", xhr);
+                alert("An error occurred while adding the user.");
+            }
+        });
     });
 
     // Function to load and display users in the table
     function loadUsers() {
-        const tbody = $("#user-table tbody");
-        tbody.empty(); // Clear existing rows
+        $.ajax({
+            url: API_BASE_URL,
+            method: "GET",
+            success: function(data) {
+                const tbody = $("#user-table tbody");
+                tbody.empty(); // Clear existing rows
 
-        userList.forEach((user) => {
-            const userRow = `
-                    <tr data-user-email="${user.userEmail}">
-                        <td>${user.userEmail}</td>
-                        <td>******</td> <!-- Hide password for security reasons -->
-                        <td>${user.userRole}</td>
-                        <td>
-                            <button class="btn btn-danger btn-sm delete-user">Delete</button>
-                            <button class="btn btn-warning btn-sm update-user">Update</button>
-                        </td>
-                    </tr>
-                `;
-            tbody.append(userRow);
+                data.forEach((user) => {
+                    const userRow = `
+                        <tr data-user-email="${user.email}">
+                            <td>${user.email}</td>
+                            <td>******</td> <!-- Hide password for security reasons -->
+                            <td>${user.role}</td>
+                            <td>
+                                <button class="btn btn-danger btn-sm delete-user">Delete</button>
+                                <button class="btn btn-warning btn-sm update-user">Update</button>
+                            </td>
+                        </tr>
+                    `;
+                    tbody.append(userRow);
+                });
+            },
+            error: function(xhr) {
+                console.error("Error loading users:", xhr);
+                alert("Failed to load users.");
+            }
         });
     }
 
@@ -66,12 +83,18 @@ $(document).ready(function() {
         const userEmail = row.data("user-email");
 
         if (confirm("Are you sure you want to delete this user?")) {
-            const userIndex = userList.findIndex(user => user.userEmail === userEmail);
-            if (userIndex !== -1) {
-                userList.splice(userIndex, 1); // Remove user from list
-                alert("User deleted successfully.");
-                row.remove(); // Remove row from the table
-            }
+            $.ajax({
+                url: `${API_BASE_URL}/${userEmail}`,
+                method: "DELETE",
+                success: function() {
+                    alert("User deleted successfully.");
+                    row.remove(); // Remove the row from the table
+                },
+                error: function(xhr) {
+                    console.error("Error deleting user:", xhr);
+                    alert("Failed to delete user.");
+                }
+            });
         }
     });
 
@@ -79,16 +102,50 @@ $(document).ready(function() {
     $(document).on("click", ".update-user", function() {
         const row = $(this).closest("tr");
         const userEmail = row.data("user-email");
-        const user = userList.find(user => user.userEmail === userEmail);
 
-        if (user) {
-            // Pre-fill the form with the user's data for editing
-            $("#userEmail").val(user.userEmail);
-            $("#userPassword").val(user.userPassword);
-            $("#userRole").val(user.userRole);
+        $.ajax({
+            url: `${API_BASE_URL}/${userEmail}`,
+            method: "GET",
+            success: function(user) {
+                // Pre-fill the form with the user's data for editing
+                $("#userEmail").val(user.email);
+                $("#userPassword").val(user.password); // This might need hashing in production
+                $("#userRole").val(user.role);
 
-            // Optionally, change the button text for "Update" mode
-            $("#submitUser").text("Update User");
-        }
+                // Optionally, change the button text for "Update" mode
+                $("#submitUser").text("Update User");
+
+                // Update user on submit
+                $("#user-form").on("submit", function(event) {
+                    event.preventDefault();
+
+                    const updatedData = {
+                        email: $("#userEmail").val(),
+                        password: $("#userPassword").val(),
+                        role: $("#userRole").val()
+                    };
+
+                    $.ajax({
+                        url: `${API_BASE_URL}/${userEmail}`,
+                        method: "PUT",
+                        data: updatedData,
+                        success: function() {
+                            alert("User updated successfully.");
+                            $("#user-form")[0].reset();
+                            loadUsers(); // Reload users table
+                            $("#submitUser").text("Submit User");
+                        },
+                        error: function(xhr) {
+                            console.error("Error updating user:", xhr);
+                            alert("Failed to update user.");
+                        }
+                    });
+                });
+            },
+            error: function(xhr) {
+                console.error("Error fetching user data:", xhr);
+                alert("Failed to fetch user data for update.");
+            }
+        });
     });
 });
